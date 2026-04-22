@@ -6,6 +6,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow: hidden;
 }
 .principal {
   display: flex;
@@ -15,31 +16,85 @@ body {
 
 .direita {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   background-color: #002366;
   width: 60vw;
   color: #d4af37;
 }
+.t2 {
+
+  font-family: "Noto Serif";
+  font-weight: 600;
+  text-align: center;
+}
+.subt2 {
+  color: #ebe5d2;
+}
+.t3 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .c2 {
-  justify-content: end;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 30vw;
-  background-color: aqua;
+}
+.c2 button {
+  border-radius: 4px;
+  outline: none;
+  padding: 20px 0;
+  width: 70%;
+  background-color: #d4af37;
+  border: none;
+  color: #211b08;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.formulario input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #ebe5d2;
+  color: #dad4c4;
+}
+
+.formulario {
+  width: 100%;
+  margin-bottom: 40px;
 }
 
 .esquerda {
-  width: 60vw;
+  width: 70vw;
   background-color: brown;
   background-repeat: no-repeat;
   background-size: cover;
+  padding-left: 10px;
+  background-position: center;
 }
 
 .titulo {
   color: #d4af37;
+  font-family: "Noto Serif";
+}
+
+.titulo h1 {
+  background-color: rgba(0, 0, 0, 0.3);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 250px;
 }
 
 .descrição {
-  margin-top: 550px;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 .d1 {
   color: #d4af37;
@@ -53,4 +108,11 @@ body {
   font-size: 70%;
   width: 70%;
   color: #dad4c4;
+}
+
+.agbalumo-regular {
+  font-family: "Agbalumo", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 36pt;
 }
