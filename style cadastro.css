@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.principal {
+  display: flex;
+  width: 100vw;
+  height: 100vh; /*unidade vh (Viewport Height) -- olham para a "janela" do navegador e não para o conteúdo.*/
+}
+
+.direita {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #002366;
+  width: 60vw;
+  color: #d4af37;
+}
+.c2 {
+  justify-content: end;
+  width: 30vw;
+  background-color: aqua;
+}
+
+.esquerda {
+  width: 60vw;
+  background-color: brown;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.titulo {
+  color: #d4af37;
+}
+
+.descrição {
+  margin-top: 550px;
+}
+.d1 {
+  color: #d4af37;
+}
+.d2 {
+  font-size: 200%;
+  width: 30%;
+  color: #dad4c4;
+}
+.d3 {
+  font-size: 70%;
+  width: 70%;
+  color: #dad4c4;
+}
