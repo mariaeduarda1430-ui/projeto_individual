@@ -19,7 +19,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: #002366;
+  background-color: #00174A;
   width: 60vw;
   color: #d4af37;
 }
@@ -56,6 +56,9 @@ body {
   color: #211b08;
   text-transform: uppercase;
   font-weight: 400;
+}
+.c2 button:hover {
+  background-color: #a48b3b;
 }
 .formulario input {
   width: 100%;
