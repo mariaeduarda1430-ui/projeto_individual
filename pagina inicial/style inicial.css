@@ -1,6 +1,5 @@
-
 body {
-     width: 100%;
+  width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -8,17 +7,51 @@ body {
 }
 
 .cabeçalho {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: blue;
-    gap: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #00174a;
+  gap: 30px;
+  padding: 13px 50px;
 }
-.cabeçalho h1{
-    margin: 0;
+
+.cabeçalho h1 {
+  margin: 0;
+}
+.titulo {
+  color: #e9c349;
 }
 .topicos {
-    display: flex;
-  gap: 25px;
-    background-color: aqua;;
+  display: flex;
+  gap: 30px;
+}
+.topicos a {
+  text-decoration: none;
+  color: #ffefcc;
+  padding: 8px 16px;
+}
+.topicos a:hover {
+  color: #af8d11;
+}
+.topicos a.ativo {
+  color: #af8d11;
+  border-bottom: 3px solid #af8d11;
+  padding-bottom: 5px;
+}
+
+
+/*fontes escolhidas*/
+.agbalumo-regular {
+  font-family: "Agbalumo", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20pt;
+}
+
+.corpo1 {
+
+    background-color: #0A0565
+}
+.f1 {
+
 }
