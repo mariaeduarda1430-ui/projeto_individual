@@ -157,20 +157,24 @@ body {
   border: none;
   background-color: #170354;
 }
+
+/*    COMEÇO CORPO 2      */
 .corpo2 {
   background-color: #f2f1f0;
-  height: 100vh;
+  height: 110vh;
 }
 .box1-corpo2 {
   display: flex;
   align-items: flex-start; /*Qual a diferença de flex-start pra start*/
   justify-content: space-between;
-
+  margin-bottom: 7%;
+  margin-left: 6%;
+  margin-right: 6%;
 }
 
 .p1 {
   margin-top: 9%;
-  margin-left: 6%;
+
   font-size: 45px;
 }
 .p1 span:nth-child(1) {
@@ -180,19 +184,63 @@ body {
 .p1 span:nth-child(3) {
   font-weight: bold;
   font-style: italic;
-  color: #735c00;
+  color:#a5860b;
+
 }
 
 .traco {
   display: flex;
-  margin-right: 6%;
   width: 37%;
- padding: 0;
+  padding: 0;
+  color: rgb(93, 88, 88);
 }
 .traco span {
-   margin-top: 27%;
-   font-family: "Manrope";
-   padding: 10px 11px;
-   border-left: 3px solid #735c00;
-   
+  margin-top: 27%;
+  font-family: "Manrope";
+  padding: 10px 20px;
+  border-left: 3px solid #a5860b;
+}
+
+/*        part2 do corpoo         */
+.box2-corpo2 {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 6%;
+  margin-right: 6%;
+ 
+}
+.imgdt {
+ 
+  position: relative;
+  width: 58%;       
+    height: auto;
+}
+.imgdt img{
+  width: 100%;    /* Ocupa toda a largura do pai */
+  height: auto;    /* Mantém a proporção original */
+}
+.txt {
+    position: absolute;
+    top: 15%;         /* Move o topo para o meio vertical do pai */
+    left: 6%;
+}
+.minit {
+  display: flex;
+  color: #AF8D11;
+  font-family: 'Manrope';
+  font-size: x-small;
+}
+.minit span {
+  margin-bottom: 20px;
+}
+.grandt {
+  color: #f2f1f0;
+  font-size: 2em;
+  
+}
+.dt {
+  color: #ffefcc;
+   font-family: 'Manrope';
+  font-size:medium;
+   width: 55%;
 }
