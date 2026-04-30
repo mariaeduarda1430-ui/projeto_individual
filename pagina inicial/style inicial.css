@@ -31,17 +31,24 @@ body {
   color: #ffefcc;
   padding: 8px 16px;
 }
-.topicos a:hover {
-  color: #af8d11;
-}
+
 .topicos a.ativo {
   color: #af8d11;
   border-bottom: 3px solid #af8d11;
   padding-bottom: 5px;
 }
 
+.usuario {
+  background-color: #e9c349;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  margin-left: 45%;
+}
+
 /*          fontes escolhidas                 */
 .agbalumo-regular {
+  /*Fonte TITULO*/
   font-family: "Agbalumo", system-ui;
   font-weight: 400;
   font-style: normal;
@@ -66,25 +73,23 @@ body {
 .corpo1 {
   display: flex;
   background-color: #0b0761;
-  padding-top: 10%;
-  height: 600px;
+  height: 690px;
   align-items: flex-start;
-  justify-content: space-around;
   width: 100%;
 }
 
 .box1-corpo {
-  width: 35%;
+  width: 15%;
   display: flex;
+  margin-top: 6%;
+  margin-left: 6%;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-around;
 }
 
 .f1 {
   display: flex;
   border-radius: 20px;
-  width: 30%;
+  width: 60%;
   color: #735c00;
   background-color: #e9c349;
   justify-content: center;
@@ -95,16 +100,99 @@ body {
   display: flex;
   color: aliceblue;
   font-size: 3em;
-  width: 60%;
 }
-.box2-corpo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 30%;
-  
+.f2 h2 {
+  margin: 0%;
+  margin-bottom: 8%;
+  margin-top: 5%;
 }
 
-.box2-corpo img {
-  width: 80%;
+.f3 {
+  font-family: "Manrope";
+  color: #ffefd5;
+  width: 25em;
+}
+
+.historia {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10%;
+  gap: 15px;
+  font-family: "Manrope";
+}
+
+.historia a {
+  text-decoration: none;
+}
+.historia a:nth-child(1) {
+  background-color: #e9c349;
+  padding: 10px 60px;
+  color: #0a0565;
+}
+.historia a:nth-child(2) {
+  padding: 10px 60px;
+  border-bottom: 3px solid #e9c349;
+  color: #ffefd5;
+}
+
+.slide {
+  display: flex;
+  margin-left: 20%;
+  gap: 1rem;
+}
+.imagens {
+  display: flex;
+  height: 85vh;
+  width: 100vh;
+}
+
+.foto2 {
+  width: 70%;
+}
+
+#esquerda,
+#direita {
+  width: 10vh;
+  height: 85vh;
+  border: none;
+  background-color: #170354;
+}
+.corpo2 {
+  background-color: #f2f1f0;
+  height: 100vh;
+}
+.box1-corpo2 {
+  display: flex;
+  align-items: flex-start; /*Qual a diferença de flex-start pra start*/
+  justify-content: space-between;
+
+}
+
+.p1 {
+  margin-top: 9%;
+  margin-left: 6%;
+  font-size: 45px;
+}
+.p1 span:nth-child(1) {
+  font-weight: bold;
+  color: #010321;
+}
+.p1 span:nth-child(3) {
+  font-weight: bold;
+  font-style: italic;
+  color: #735c00;
+}
+
+.traco {
+  display: flex;
+  margin-right: 6%;
+  width: 37%;
+ padding: 0;
+}
+.traco span {
+   margin-top: 27%;
+   font-family: "Manrope";
+   padding: 10px 11px;
+   border-left: 3px solid #735c00;
+   
 }
