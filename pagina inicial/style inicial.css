@@ -407,8 +407,53 @@ body {
   width: 90%;
 }
 .caixas1a3 {
-  
   display: flex;
   margin-top: 5%;
   justify-content: space-around;
+}
+
+.corpo4 {
+  display: flex;
+  background-color: #00174A;
+  border-top: 3px solid #735c00;
+  height: 30vh;
+  align-items: center;
+ justify-content: space-around;
+}
+.referencia1 {
+  display: flex;
+  width: 25%;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.titulo-referencia1 {
+  font-family: 'Noto Serif';
+  color: #E9C349;
+  font-size: 1.4em;
+}
+.descricao-referencia1 {  
+  font-family: 'Manrope';
+  color: #bbb9b9;
+}
+
+.referencia2 {
+  display: flex;
+  width: 25%;
+  flex-direction: column;
+  gap: 15px;
+}
+.titulo-referencia2 {
+  font-family: 'Noto Serif';
+  color: #f2f1f0;
+  font-size: 1.4em;
+}
+
+.topicos-refencia2 {
+  font-family: 'Manrope';
+}
+.topicos-refencia2 a{
+  text-decoration: none;
+  color:#bbb9b9;
+  padding: 8px 16px;
 }
