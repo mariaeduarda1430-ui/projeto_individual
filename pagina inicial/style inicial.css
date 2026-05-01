@@ -81,6 +81,7 @@ body {
   height: 690px;
   align-items: flex-start;
   width: 100%;
+  justify-content: space-between;
 }
 
 .box1-corpo {
@@ -140,25 +141,36 @@ body {
   color: #ffefd5;
 }
 
+
+
 .slide {
+  margin-top: 3%;
   display: flex;
-  margin-left: 20%;
-  gap: 1rem;
+  height: 87%;
+  width: 50%;
+  
 }
 .imagens {
   display: flex;
-  height: 85vh;
-  width: 100vh;
+  width: 100%;
+  height: auto;
 }
-
-.foto2 {
+.imagens img:nth-child(2){
+  width: 70%;
+}
+.imagens img:nth-child(3) {
+  width: 70%;
+}
+.imagens img:nth-child(4) {
   width: 70%;
 }
 
-#esquerda,
-#direita {
+
+
+
+#esquerda {
   width: 10vh;
-  height: 85vh;
+  height: 100%;
   border: none;
   background-color: #170354;
 }
@@ -166,7 +178,7 @@ body {
 /*    COMEÇO CORPO 2      */
 .corpo2 {
   background-color: #f2f1f0;
-  height: 110vh;
+  height: 10vh;
 }
 .box1-corpo2 {
   display: flex;
@@ -205,7 +217,7 @@ body {
   border-left: 3px solid #a5860b;
 }
 
-/*        part2 do corpoo         */
+/*        part2 do corpo     */
 .box2-corpo2 {
   display: flex;
   justify-content: space-between;
@@ -249,12 +261,12 @@ body {
 
 .caixa {
   display: flex;
-background-color: #eedbb2;
-width: 30%;
-border: 3px solid #a5860b;
-justify-content: center;
-align-items: center;
-flex-direction: column;
+  background-color: #f7e5bd;
+  width: 30%;
+  border: 3px solid #a5860b;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .titulo-caixa {
   display: flex;
@@ -262,14 +274,23 @@ flex-direction: column;
   font-weight: bold;
   font-size: x-large;
   justify-content: center;
- 
+  margin-top: 17%;
   color: #010321;
 }
 .descricao-caixa {
-   display: flex;
+  display: flex;
   font-family: "Manrope";
-margin-top: 10%;
-width: 60%;
-
+  margin-top: 10%;
+  width: 60%;
+  margin-bottom: 30%;
+  color: rgb(93, 88, 88);
 }
 
+.link-caixa {
+  display: flex;
+  width: 60%;
+}
+.link-caixa a {
+  text-decoration: none;
+  font-size: small;
+}
