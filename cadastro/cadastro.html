@@ -63,25 +63,25 @@
                 <div class="c2">
                     <div class="formulario">
                         <div class="nome">
-                        <p>NOME COMPLETO</p>
+                        <p>NOME COMPLETO <span id="mensagemnome"></span></p>
                         <input type="text" id="input_nome" placeholder="Ex: Alexandre de Alcantara">
                         </div>
                         <div class="email">
-                        <p>ENDEREÇO DE REGISTRO (EMAIL)</p>
+                        <p>ENDEREÇO DE REGISTRO (EMAIL) <span id="mensagememail"></span></p>
                         <input type="text" id="input_email" placeholder="primeiro@cadastro.com">
                         </div>
                         <div class="senha">
-                        <p>CHAVE DE ACESSO (SENHA)</p>
-                        <input type="text" id="input_senha">
+                        <p>CHAVE DE ACESSO (SENHA)<span id="mensagemsenha"></span></p>
+                        <input pass="text" oninput="validaçao()" id="input_senha">
                         </div>
                         <div class="confirmacao">
-                        <p>CONFIRMAÇÃO SENHA</p>
+                        <p>CONFIRMAÇÃO SENHA  <span id=mensagemconfirm></span></p>
                         <input type="text" id="input_confirmação">
                         </div>
                         
                     </div>
-
-                    <button onclick="cadastrar()">cadastrar</button>
+                   
+                    <button onclick="cadastrar()">Cadastrar</button>
                     <div class="login">
                        <span>Já possui um legado? <a href="../login/login.html">LOGIN</a></span> 
                     </div>
@@ -96,3 +96,90 @@
 </body>
 
 </html>
+<script>
+    let validaçãoS = ``;
+let mensagem = ``;
+function validaçao() {
+  let contadorSenha = 0;
+
+  let senha = input_senha.value;
+
+  let temNumero = false;
+
+  for (let i = 0; i < senha.length; i++) {
+    if (senha[i] >= "0" && senha[i] <= "9") {
+      temNumero = true;
+    }
+  }
+
+  if (senha == senha.toLowerCase()) {
+  } else if (senha != senha.toLowerCase()) {
+    contadorSenha++;
+  }
+  if (senha == senha.toUpperCase()) {
+  } else if (senha != senha.toUpperCase()) {
+    contadorSenha++;
+  }
+  if (temNumero != true) {
+  } else if (temNumero == true) {
+    contadorSenha++;
+  }
+  if (senha.length < 8) {
+  } else if (senha.length >= 8) {
+    contadorSenha++;
+  }
+
+  if (contadorSenha == 4) {
+    validaçãoS = "Forte";
+    mensagem = `<span style= "color: green">*Senha forte</span>`;
+  } else if (contadorSenha >= 2) {
+    validaçãoS = "Média";
+    mensagem = `<span style= "color: orange">*Senha média</span>`;
+  } else if (contadorSenha == 1) {
+    mensagem = `<span style= "color: red">*Senha fraca</span>`;
+  } else if (contadorSenha == 0) {
+    mensagem = `<span style= "color: red">*Senha insegura</span>`;
+  }
+  mensagemsenha.innerHTML = mensagem;
+}
+
+function cadastrar() {
+  let nome = input_nome.value;
+  let email = input_email.value;
+  let senha = input_senha.value;
+  let confirmação = input_senha.value;
+  let mensagem = "";
+  let contador = 0;
+
+  if (nome.length < 3) {
+    mensagemnome.innerHTML = `<span style= "color: red">*Insira um nome válido</span>`;
+  } else {
+    contador++;
+    mensagemnome.innerHTML = ``;
+  }
+  if (!email.includes("@") || !email.includes(".com") || email.endsWith("@")) {
+    mensagememail.innerHTML = `<span style= "color: red">*Insira um email válido</span>`;
+  } else {
+    contador++;
+    mensagememail.innerHTML = ``;
+  }
+  if (validaçãoS != "Forte") {
+    mensagemsenha.innerHTML = `<span style= "color: red">*Necessita de uma senha forte (deve conter 8 caracteres, uma letra maiúscula, uma minuscula e um numero)</span>`;
+  } else {
+    contador++;
+    mensagemsenha.innerHTML = mensagem;
+  }
+
+  if (senha != confirmação) {
+    mensagemconfirm.innerHTML = `<span style= "color: red">*Senha incorreta</span>`;
+  } else {
+    contador++;
+    mensagemconfirm.innerHTML = ``;
+  }
+
+  if (contador == 4) {
+    window.location = '../login/login.html';
+  }
+}
+
+</script>
