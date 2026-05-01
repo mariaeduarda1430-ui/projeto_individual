@@ -73,6 +73,11 @@ body {
   font-optical-sizing: auto;
   font-weight: 200;
 }
+.noto-serif-bold {
+  font-family: "Noto Serif", serif;
+  font-size: 3em;
+  font-weight: bold;
+}
 
 /*        começo do corpo do site              */
 .corpo1 {
@@ -141,21 +146,18 @@ body {
   color: #ffefd5;
 }
 
-
-
 .slide {
   margin-top: 3%;
   display: flex;
   height: 87%;
   width: 50%;
-  
 }
 .imagens {
   display: flex;
   width: 100%;
   height: auto;
 }
-.imagens img:nth-child(2){
+.imagens img:nth-child(2) {
   width: 70%;
 }
 .imagens img:nth-child(3) {
@@ -164,9 +166,6 @@ body {
 .imagens img:nth-child(4) {
   width: 70%;
 }
-
-
-
 
 #esquerda {
   width: 10vh;
@@ -178,7 +177,7 @@ body {
 /*    COMEÇO CORPO 2      */
 .corpo2 {
   background-color: #f2f1f0;
-  height: 10vh;
+  height: 120vh;
 }
 .box1-corpo2 {
   display: flex;
@@ -191,7 +190,7 @@ body {
 
 .p1 {
   margin-top: 9%;
-
+  font-family: "Noto Serif";
   font-size: 45px;
 }
 .p1 span:nth-child(1) {
@@ -293,4 +292,123 @@ body {
 .link-caixa a {
   text-decoration: none;
   font-size: small;
+}
+.corpo3 {
+  display: flex;
+  background-color: #0a0565;
+  height: 70vh;
+  align-items: center;
+}
+.box1-corpo3 {
+  height: 60vh;
+  width: 100%;
+  justify-content: space-between;
+
+}
+
+.titulo-corpo3 {
+  display: flex;
+  margin-top: 5%;
+  color: #f2f1f0;
+  justify-content: center;
+  width: auto;
+}
+.titulo-corpo3 span {
+  border-bottom: 3px solid #a5860b;
+}
+
+.caixa01 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+   padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #2A4386;
+  width: 25%;
+  gap: 15px;
+  border: 3px solid #FFE088;
+}
+.numero-caixa01 {
+  font-family: "Noto Serif";
+  font-style: italic;
+  color: #ffe088;
+  font-size: 2em;
+}
+.titulo-caixa01 {
+  font-family: "Noto Serif";
+  font-size: 1em;
+  font-weight: bold;
+  color: #FFEFCC;
+}
+.descricao-caixa01 {
+  font-family: "Manrope";
+  font-size: 15px;
+  color:  #f2f1f0;
+  width: 90%;
+}
+
+.caixa02 {
+   display: flex;
+  align-items: center;
+  flex-direction: column;
+   padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #2A4386;
+  width: 25%;
+  gap: 15px;
+  border: 3px solid #FFE088;
+}
+.numero-caixa02 {
+  font-family: "Noto Serif";
+  font-style: italic;
+  color: #ffe088;
+  font-size: 2em;
+}
+.titulo-caixa02 {
+  font-family: "Noto Serif";
+  font-size: 1em;
+  font-weight: bold;
+ color: #FFEFCC;
+}
+.descricao-caixa02 {
+  font-family: "Manrope";
+  font-size: 15px;
+  color:  #f2f1f0;
+  width: 90%;
+}
+
+.caixa03 {
+   display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #2A4386;
+  width: 25%;
+  gap: 15px;
+  border: 3px solid #FFE088;
+}
+.numero-caixa03 {
+  font-family: "Noto Serif";
+  font-style: italic;
+  color: #ffe088;
+  font-size: 2em;
+}
+.titulo-caixa03 {
+  font-family: "Noto Serif";
+  font-size: 1em;
+  font-weight: bold;
+  color: #FFEFCC;
+}
+.descricao-caixa03 {
+  font-family: "Manrope";
+  font-size: 15px;
+  color:  #f2f1f0;
+  width: 90%;
+}
+.caixas1a3 {
+  
+  display: flex;
+  margin-top: 5%;
+  justify-content: space-around;
 }
