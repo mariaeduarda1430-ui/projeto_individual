@@ -1,4 +1,36 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
+.agbalumo-regular {
+  /*Fonte TITULO*/
+  font-family: "Agbalumo", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20pt;
+}
+
+.manrope-regular {
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+.manrope-bold {
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  font-size: x-small;
+}
+.noto-serif-regular {
+  font-family: "Noto Serif", serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+}
+.noto-serif-bold {
+  font-family: "Noto Serif", serif;
+  font-size: 3em;
+  font-weight: bold;
+}
+/*-------------------------------------------------------*/
 
 body {
   width: 100%;
@@ -24,13 +56,15 @@ body {
   color: #d4af37;
 }
 .t2 {
-
-  font-family: "Noto Serif";
+  margin-top: 30px;
   font-weight: 600;
   text-align: center;
 }
 .subt2 {
   color: #ebe5d2;
+  margin-top: 10%;
+  font-family: 'Manrope';
+  font-weight: 200;
 }
 .t3 {
   width: 100%;
@@ -38,6 +72,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Manrope';
+  font-size: small;
 }
 .c2 {
   display: flex;
@@ -56,6 +92,7 @@ body {
   color: #211b08;
   text-transform: uppercase;
   font-weight: 400;
+  margin-bottom: 6%
 }
 .c2 button:hover {
   background-color: #a48b3b;
@@ -64,12 +101,12 @@ body {
   width: 100%;
   border: none;
   background: transparent;
-  border-bottom: 1px solid #ebe5d2;
+  border-bottom: 1px solid #778ED6;
   color: #dad4c4;
 }
 
 .formulario {
-  width: 100%;
+  width: 90%;
   margin-bottom: 40px;
 }
 
@@ -103,14 +140,15 @@ body {
   color: #d4af37;
 }
 .d2 {
-  font-size: 200%;
-  width: 30%;
+  font-size: 100%;
+  width: 60%;
   color: #dad4c4;
 }
 .d3 {
-  font-size: 70%;
+  font-size: 80%;
   width: 70%;
   color: #dad4c4;
+  font-family: 'Manrope';
 }
 
 .agbalumo-regular {
@@ -118,4 +156,22 @@ body {
   font-weight: 400;
   font-style: normal;
   font-size: 36pt;
+}
+
+.login {
+  margin-top: 20px;
+}
+.login a {
+   text-decoration: none;
+  color: #ffefcc;
+  padding: 7px 7px;
+}
+.nome {
+  margin-bottom: 10%;
+}
+.email {
+   margin-bottom: 10%;
+}
+.senha {
+   margin-bottom: 10%;
 }

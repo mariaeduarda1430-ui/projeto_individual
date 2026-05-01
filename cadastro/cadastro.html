@@ -11,6 +11,22 @@
         href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Matemasie&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Send+Flowers&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style cadastro.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Matemasie&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Manrope:wght@200..800&family=Matemasie&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Send+Flowers&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Manrope:wght@200..800&family=Matemasie&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Send+Flowers&display=swap"
+        rel="stylesheet">
+        <link rel="stylesheet" href="./definicoes.js">
 </head>
 
 <body>
@@ -30,9 +46,7 @@
                     <span class="noto-serif-bold">Onde a vitalidade se torna nobreza</span>
                 </div>
                 <div class="d3">
-                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptate possimus,
-                        quisquam aliquam aspernatur fugiat delectus porro quasi placeat eos soluta deserunt harum,
-                        facere rem architecto nisi doloremque totam. Minus?</span>
+                    <span>Não somos apenas cuidadores; somos os curadores de uma linhagem de saúde superior. Bem-vindo à fronteira da nutrição editorial para o seu companheiro mais leal</span>
                 </div>
             </div>
         </div>
@@ -48,20 +62,29 @@
             <div class="t3">
                 <div class="c2">
                     <div class="formulario">
-                        <p>Nome</p>
-                        <input type="text" id="input_nome">
-                        <p>Email</p>
-                        <input type="text" id="input_email">
-                        <p>Senha</p>
+                        <div class="nome">
+                        <p>NOME COMPLETO</p>
+                        <input type="text" id="input_nome" placeholder="Ex: Alexandre de Alcantara">
+                        </div>
+                        <div class="email">
+                        <p>ENDEREÇO DE REGISTRO (EMAIL)</p>
+                        <input type="text" id="input_email" placeholder="primeiro@cadastro.com">
+                        </div>
+                        <div class="senha">
+                        <p>CHAVE DE ACESSO (SENHA)</p>
                         <input type="text" id="input_senha">
-                        <p>Confirmação da senha</p>
+                        </div>
+                        <div class="confirmacao">
+                        <p>CONFIRMAÇÃO SENHA</p>
                         <input type="text" id="input_confirmação">
-                        <p>especie do companheiro</p>
-                        <input type="text" id="input_especie">
-
+                        </div>
+                        
                     </div>
 
                     <button onclick="cadastrar()">cadastrar</button>
+                    <div class="login">
+                       <span>Já possui um legado? <a href="../login/login.html">LOGIN</a></span> 
+                    </div>
                 </div>
             </div>
         </div>
