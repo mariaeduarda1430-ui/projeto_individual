@@ -51,7 +51,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: #00174A;
+  background-color: #00174a;
   width: 60vw;
   color: #d4af37;
 }
@@ -63,7 +63,7 @@ body {
 .subt2 {
   color: #ebe5d2;
   margin-top: 10%;
-  font-family: 'Manrope';
+  font-family: "Manrope";
   font-weight: 200;
 }
 .t3 {
@@ -72,7 +72,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Manrope';
+  font-family: "Manrope";
   font-size: small;
 }
 .c2 {
@@ -83,16 +83,17 @@ body {
   width: 30vw;
 }
 .c2 button {
-  border-radius: 4px;
   outline: none;
   padding: 20px 0;
-  width: 70%;
+  width: 90%;
   background-color: #d4af37;
   border: none;
   color: #211b08;
   text-transform: uppercase;
   font-weight: 400;
-  margin-bottom: 6%
+  margin-bottom: 5%;
+  font-family: "Manrope";
+  font-weight: bold;
 }
 .c2 button:hover {
   background-color: #a48b3b;
@@ -101,7 +102,7 @@ body {
   width: 100%;
   border: none;
   background: transparent;
-  border-bottom: 1px solid #778ED6;
+  border-bottom: 1px solid #778ed6;
   color: #dad4c4;
 }
 
@@ -121,7 +122,6 @@ body {
 
 .titulo {
   color: #d4af37;
-
 }
 
 .titulo h1 {
@@ -148,7 +148,7 @@ body {
   font-size: 80%;
   width: 70%;
   color: #dad4c4;
-  font-family: 'Manrope';
+  font-family: "Manrope";
 }
 
 .agbalumo-regular {
@@ -162,7 +162,7 @@ body {
   margin-top: 20px;
 }
 .login a {
-   text-decoration: none;
+  text-decoration: none;
   color: #ffefcc;
   padding: 7px 7px;
 }
@@ -170,8 +170,8 @@ body {
   margin-bottom: 10%;
 }
 .email {
-   margin-bottom: 10%;
+  margin-bottom: 10%;
 }
 .senha {
-   margin-bottom: 10%;
+  margin-bottom: 10%;
 }

@@ -1,0 +1,161 @@
+.agbalumo-regular {
+  /*Fonte TITULO*/
+  font-family: "Agbalumo", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 50px;
+}
+
+.manrope-regular {
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+.manrope-bold {
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  font-size: x-small;
+}
+.noto-serif-regular {
+  font-family: "Noto Serif", serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+}
+.noto-serif-bold {
+  font-family: "Noto Serif", serif;
+  font-size: 3em;
+  font-weight: bold;
+}
+/*===============================================================*/
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.pagina {
+  display: flex;
+  background-color: #002366;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  gap: 5%;
+}
+
+.titulo {
+  display: flex;
+  border-bottom: 3px solid #ffe088;
+  color: #ffe088;
+  background-color: #002366;
+  justify-content: center;
+  height: 10%;
+}
+.caixa-maior {
+  display: flex;
+  height: 70%;
+  width: 40%;
+  background-color: #021f56;
+  border: 3px solid #ffe088;
+}
+.caixa {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  gap: 20px;
+}
+.titulo-caixa {
+  font-family: "Noto Serif";
+  color: #ffffff;
+  font-size: 40px;
+  width: 68%;
+  margin-top: 10%;
+}
+.subt-caixa {
+  font-family: "Manrope";
+  font-size: medium;
+  color: #cca730;
+}
+
+.campos {
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  height: 100%;
+  align-items: flex-start;
+  gap: 30px;
+}
+.campos input {
+    width: 100%;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #778ED6;
+  color: #dad4c4;
+}
+
+.email {
+    display: flex;
+    color: #cca730;
+    font-family: 'Manrope';
+    font-size: small;
+    width: 100%;
+    margin-top: 5%;
+    flex-direction: column;
+    
+}
+.senha {
+     display: flex;
+     flex-direction: column;
+    color: #cca730;
+    font-family: 'Manrope';
+    font-size: small;
+    width: 100%;
+}
+.botao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     flex-direction: column;
+     width: 100%;
+     gap: 20px;
+}
+.botao button {
+    display: flex;
+    justify-content: center;
+    background-color: #cca730;
+     color:#002366;
+     border: none;
+    font-family: 'Manrope';
+    font-size: medium;
+    font-weight: bold;
+    width: 500px;
+    padding: 2%;
+}
+.botao button:hover {
+    background-color: #a48b3b;
+}
+.cadastro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Manrope';
+    font-size: small;
+}
+.cadastro span {
+    display: flex;
+    justify-content: center;
+    color: antiquewhite;
+}
+.cadastro a {
+   text-decoration: none;
+  color:#ffe088;
+  padding: 7px 7px;
+  border-bottom: px solid #ffe088;
+}
+.cadastro a:hover {
+    color: #a48b3b;
+}
