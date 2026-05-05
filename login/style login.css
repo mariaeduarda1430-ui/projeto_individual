@@ -59,6 +59,8 @@ body {
   width: 40%;
   background-color: #021f56;
   border: 3px solid #ffe088;
+  
+
 }
 .caixa {
   display: flex;
@@ -74,6 +76,7 @@ body {
   font-size: 40px;
   width: 68%;
   margin-top: 10%;
+  text-align: center;
 }
 .subt-caixa {
   font-family: "Manrope";
@@ -93,8 +96,13 @@ body {
     width: 100%;
   border: none;
   background: transparent;
-  border-bottom: 1px solid #778ED6;
+  border-bottom: 1px solid #586793;
   color: #dad4c4;
+  font-size: larger;
+}
+.campos input::placeholder {
+    color: #586793;
+    
 }
 
 .email {
@@ -104,8 +112,7 @@ body {
     font-size: small;
     width: 100%;
     margin-top: 5%;
-    flex-direction: column;
-    
+    flex-direction: column;   
 }
 .senha {
      display: flex;

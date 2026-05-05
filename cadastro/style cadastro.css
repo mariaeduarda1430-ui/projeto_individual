@@ -102,13 +102,17 @@ body {
   width: 100%;
   border: none;
   background: transparent;
-  border-bottom: 1px solid #778ed6;
+  border-bottom: 1px solid #586793;
   color: #dad4c4;
+  font-size: larger;
 }
 
 .formulario {
   width: 90%;
   margin-bottom: 40px;
+}
+.formulario input::placeholder {
+color: #586793;
 }
 
 .esquerda {
