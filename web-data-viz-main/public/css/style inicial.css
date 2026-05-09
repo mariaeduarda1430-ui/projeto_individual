@@ -147,26 +147,17 @@ body {
 }
 
 .slide {
-  margin-top: 3%;
+  
   display: flex;
-  height: 87%;
-  width: 50%;
-}
-.imagens {
-  display: flex;
-  width: 100%;
-  height: auto;
-}
-.imagens img:nth-child(2) {
-  width: 70%;
-}
-.imagens img:nth-child(3) {
-  width: 70%;
-}
-.imagens img:nth-child(4) {
-  width: 70%;
+  height: 100%;
+  width: 60%;
+  align-items: center;
 }
 
+.slide img {
+  display: flex;
+  width: 80%;
+}
 #esquerda {
   width: 10vh;
   height: 100%;
