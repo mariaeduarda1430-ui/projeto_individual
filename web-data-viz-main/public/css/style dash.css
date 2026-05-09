@@ -230,6 +230,7 @@ body {
   background-color: #fffefb;
   height: 60%;
   width: 60%;
+  box-shadow: 2px 2px 10px rgb(71, 68, 68);
 }
 .titulo-caixa2 {
   display: flex;
