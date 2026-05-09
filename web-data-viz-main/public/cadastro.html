@@ -1,224 +1,185 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>AquaTech | Cadastro</title>
-
-  <script src="./js/sessao.js"></script>
-
-  <link rel="stylesheet" href="./css/estilo.css" />
-  <link rel="icon" href="./assets/icon/favicon2.ico" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de cadastro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Matemasie&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Send+Flowers&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/style cadastro.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Matemasie&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Manrope:wght@200..800&family=Matemasie&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Send+Flowers&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Manrope:wght@200..800&family=Matemasie&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Send+Flowers&display=swap"
+        rel="stylesheet">
+        <link rel="stylesheet" href="./definicoes.js">
 </head>
 
-<body onload="listar()">
-  <!--header inicio-->
-  <div class="header">
-    <div class="container">
-      <h1 class="titulo">AquaTech</h1>
-      <ul class="navbar">
-        <li>
-          <a href="index.html">Inicial</a>
-        </li>
-        <li>
-          <a href="simulador.html">Simulador</a>
-        </li>
-        <li>|</li>
-        <li>
-          <a href="login.html">Login</a>
-        </li>
-        <li class="agora">
-          <a href="#">Cadastro</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <!--header fim-->
+<body>
 
-  <div class="login">
-    <div class="alerta_erro">
-      <div class="card_erro" id="cardErro">
-        <span id="mensagem_erro"></span>
-      </div>
-    </div>
-    <div class="container">
-      <div class="card card-cadastro">
-        <h2>Bem-vindo!</h2>
-        <div class="formulario">
-          <!--
-                         Para inserir mais um campo, copie uma das inputs abaixo.
-                         Assim que inserir vá para o script abaixo.
-                     -->
-          <div class="campo">
-            <span>Código de ativação:</span>
-            <input id="codigo_input" type="text" placeholder="Insira aqui seu código" />
-          </div>
-          <div class="campo">
-            <span>Nome:</span>
-            <input id="nome_input" type="text" placeholder="Seu nome" />
-          </div>
-          <div class="campo">
-            <span>E-mail:</span>
-            <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
-          </div>
-          <div class="campo">
-            <span>Senha:</span>
-            <input id="senha_input" type="password" placeholder="******" />
-          </div>
-          <div class="campo">
-            <span>Confirmação da Senha:</span>
-            <input id="confirmacao_senha_input" type="password" placeholder="******" />
-          </div>
-          <span> CPF </span>
-          <input type="number" id="input_cpf">
-          <button class="botao" onclick="cadastrar()" placeholder="12345678910">Cadastrar</button>
-        </div>
-        <div id="div_aguardar" class="loading-div">
-          <img src="./assets/circle-loading.gif" id="loading-gif" />
+
+    <div class="principal">
+        <div class="esquerda" style="background-image: url('./assets/dobermann.png');">
+            <div class="titulo">
+
+                <h1 class="agbalumo-regular">NutriNobre</h1>
+            </div>
+            <div class="descrição">
+                <div class="d1">
+                    <p>Cuidado pet</p>
+                </div>
+                <div class="d2">
+                    <span class="noto-serif-bold">Onde a vitalidade se torna nobreza</span>
+                </div>
+                <div class="d3">
+                    <span>Não somos apenas cuidadores; somos os curadores de uma linhagem de saúde superior. Bem-vindo à fronteira da nutrição editorial para o seu companheiro mais leal</span>
+                </div>
+            </div>
         </div>
 
-        <div id="div_erros_login"></div>
-      </div>
-    </div>
-  </div>
 
-  <!--footer inicio-->
-  <div class="footer">
-    <div class="container">
-      <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
-      <span class="version">v1.0.0</span>
+        <div class="direita">
+            <div class="t2">
+                <h1>Junte-se a nutrição real</h1>
+                <div class="subt2">
+                    <p>Inicie a jornada de longevidade e vigor para o seu pet</p>
+                </div>
+            </div>
+            <div class="t3">
+                <div class="c2">
+                    <div class="formulario">
+                        <div class="nome">
+                        <p>NOME COMPLETO <span id="mensagemnome"></span></p>
+                        <input type="text" id="input_nome" placeholder="Ex: Alexandre de Alcantara">
+                        </div>
+                        <div class="email">
+                        <p>ENDEREÇO DE REGISTRO (EMAIL) <span id="mensagememail"></span></p>
+                        <input type="text" id="input_email" placeholder="✉ primeiro@cadastro.com">
+                        </div>
+                        <div class="senha">
+                        <p>CHAVE DE ACESSO (SENHA)<span id="mensagemsenha"></span></p>
+                        <input pass="password" oninput="validaçao()" id="input_senha"  placeholder="🔒︎ insira sua senha">
+                        </div>
+                        <div class="confirmacao">
+                        <p>CONFIRMAÇÃO SENHA  <span id=mensagemconfirm></span></p>
+                        <input type="password" id="input_confirmação" placeholder="🔒︎ confirme sua senha">
+                        </div>
+                        
+                    </div>
+                   
+                    <button onclick="cadastrar()">Cadastrar</button>
+                    <div class="login">
+                       <span>Já possui um legado? <a href="./login.html">LOGIN</a></span> 
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <!--footer fim-->
+
+
+
+
 </body>
 
 </html>
-
 <script>
+    let validaçãoS = ``;
+let mensagem = ``;
+function validaçao() {
+  let contadorSenha = 0;
 
-  // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaEmpresasCadastradas = [];
+  let senha = input_senha.value;
 
-  function cadastrar() {
-    // aguardar();
+  let temNumero = false;
 
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
-    var nomeVar = nome_input.value;
-    var emailVar = email_input.value;
-    var senhaVar = senha_input.value;
-    var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var codigoVar = codigo_input.value;
-    var idEmpresaVincular
-    var cpfVar = input_cpf.value;
-
-    // Verificando se há algum campo em branco
-    if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      codigoVar == "" ||
-      cpfVar == ""
-    ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
-
-      finalizarAguardar();
-      return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
+  for (let i = 0; i < senha.length; i++) {
+    if (senha[i] >= "0" && senha[i] <= "9") {
+      temNumero = true;
     }
-
-
-    // Verificando se o código de ativação é de alguma empresa cadastrada
-    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-        idEmpresaVincular = listaEmpresasCadastradas[i].id
-        console.log("Código de ativação válido.");
-        break;
-      } else {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-        finalizarAguardar();
-      }
-    }
-
-    if (nomeVar.length > 1 && emailVar.includes('@') || emailVar.includes('.') && senhaVar.length > 6 && confirmacaoSenhaVar == senhaVar && cpfVar.length == 11) {
-      // Enviando o valor da nova input
-      fetch("/usuarios/cadastrar", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          // crie um atributo que recebe o valor recuperado aqui
-          // Agora vá para o arquivo routes/usuario.js
-          cpfServer: cpfVar,
-          nomeServer: nomeVar,
-          emailServer: emailVar,
-          senhaServer: senhaVar,
-          idEmpresaVincularServer: idEmpresaVincular
-        }),
-      })
-        .then(function (resposta) {
-          console.log("resposta: ", resposta);
-
-          if (resposta.ok) {
-            cardErro.style.display = "block";
-
-            mensagem_erro.innerHTML =
-              "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-            setTimeout(() => {
-              window.location = "login.html";
-            }, "2000");
-
-            limparFormulario();
-            finalizarAguardar();
-          } else {
-            throw "Houve um erro ao tentar realizar o cadastro!";
-          }
-        })
-        .catch(function (resposta) {
-          console.log(`#ERRO: ${resposta}`);
-          finalizarAguardar();
-        });
-
-      return false;
-    } else {
-      
-    }
-    
-
   }
 
-  // Listando empresas cadastradas 
-  function listar() {
-    fetch("/empresas/listar", {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((empresas) => {
-          empresas.forEach((empresa) => {
-            listaEmpresasCadastradas.push(empresa);
-
-            console.log("listaEmpresasCadastradas")
-            console.log(listaEmpresasCadastradas[0].codigo_ativacao)
-          });
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
+  if (senha == senha.toLowerCase()) {
+  } else if (senha != senha.toLowerCase()) {
+    contadorSenha++;
+  }
+  if (senha == senha.toUpperCase()) {
+  } else if (senha != senha.toUpperCase()) {
+    contadorSenha++;
+  }
+  if (temNumero != true) {
+  } else if (temNumero == true) {
+    contadorSenha++;
+  }
+  if (senha.length < 8) {
+  } else if (senha.length >= 8) {
+    contadorSenha++;
   }
 
-  function sumirMensagem() {
-    cardErro.style.display = "none";
+  if (contadorSenha == 4) {
+    validaçãoS = "Forte";
+    mensagem = `<span style= "color: green">*Senha forte</span>`;
+  } else if (contadorSenha >= 2) {
+    validaçãoS = "Média";
+    mensagem = `<span style= "color: orange">*Senha média</span>`;
+  } else if (contadorSenha == 1) {
+    mensagem = `<span style= "color: red">*Senha fraca</span>`;
+  } else if (contadorSenha == 0) {
+    mensagem = `<span style= "color: red">*Senha insegura</span>`;
   }
+  mensagemsenha.innerHTML = mensagem;
+}
+
+function cadastrar() {
+  let nome = input_nome.value;
+  let email = input_email.value;
+  let senha = input_senha.value;
+  let confirmação = input_senha.value;
+  let mensagem = "";
+  let contador = 0;
+
+  if (nome.length < 3) {
+    mensagemnome.innerHTML = `<span style= "color: red">*Insira um nome válido</span>`;
+  } else {
+    contador++;
+    mensagemnome.innerHTML = ``;
+  }
+  if (!email.includes("@") || !email.includes(".com") || email.endsWith("@")) {
+    mensagememail.innerHTML = `<span style= "color: red">*Insira um email válido</span>`;
+  } else {
+    contador++;
+    mensagememail.innerHTML = ``;
+  }
+  if (validaçãoS != "Forte") {
+    mensagemsenha.innerHTML = `<span style= "color: red">*Necessita de uma senha forte (deve conter 8 caracteres, uma letra maiúscula, uma minuscula e um numero)</span>`;
+  } else {
+    contador++;
+    mensagemsenha.innerHTML = mensagem;
+  }
+
+  if (senha != confirmação) {
+    mensagemconfirm.innerHTML = `<span style= "color: red">*Senha incorreta</span>`;
+  } else {
+    contador++;
+    mensagemconfirm.innerHTML = ``;
+  }
+
+  if (contador == 4) {
+    window.location = '../login/login.html';
+  }
+}
+
 </script>
