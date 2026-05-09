@@ -103,14 +103,21 @@ body {
   height: 13%;
   color: rgb(93, 88, 88);
 }
-
+.caixa-grande {
+  display: flex;
+  height: 100%;
+  width: 30%;
+  gap: 5%;
+  margin-left: 3%;
+  flex-direction: column;
+}
 .caixa1 {
   display: flex;
-  background-color: #fff9ed;
+  background-color: #fffefb;
+  width: 100%;
   flex-direction: column;
-  width: 30%;
-  height: 35%;
-  margin-left: 3%;
+  height: 40%;
+
   align-items: center;
   font-size: small;
   border: 3px solid #cca730;
@@ -142,16 +149,15 @@ body {
   background: transparent;
   border: none;
   border: 1px solid #927411;
-  border-bottom: 2px solid  #927411;
+  border-bottom: 2px solid #927411;
   color: #00174a;
   font-size: medium;
-  font-family: 'Manrope';
+  font-family: "Manrope";
   font-weight: 400;
-
 }
 
 .botao-caixa1 {
-  display: flex;
+  display: flex;    
   height: 35%;
   width: 87%;
   align-items: center;
@@ -159,8 +165,54 @@ body {
 }
 
 .botao-caixa1 button {
-    height: 55%;
-    width: 100%;
-    background-color: #00174a;
-    color: #f2f1f0;
+  height: 55%;
+  width: 100%;
+  background-color: #00174a;
+  color: #f2f1f0;
+  font-family: "Manrope";
+  font-weight: 300;
+  font-size: medium;
+}
+
+.caixa-pequena {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  gap: 10%;
+  font-family: "Manrope";
+  font-size: 13px;
+  height: 100px;
+}
+
+.esquerda-caixa-pequena {
+  display: flex;
+  background-color: #eacd6d;
+  color: #68530c;
+  height: 100%;
+  width: 58%;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: 3px;
+}
+.esquerda-caixa-pequena span {
+  display: flex;
+  height: 40%;
+  align-items: flex-end;
+}
+.direita-caixa-pequena {
+  display: flex;
+  background-color: #052f8a;
+  color: #E1E0FF;
+  height: 100%;
+  align-items: flex-start;
+  justify-content: center;
+  width: 60%;
+  border-radius: 3px;
+}
+
+.direita-caixa-pequena span {
+  display: flex;
+  height: 40%;
+  align-items: flex-end;
 }
