@@ -290,4 +290,53 @@ body {
     margin-bottom: 2px solid #68530c;
 }
 
-.
+.corpo3 {
+    display: flex;
+    background-color: #00174a;
+    height: 30vh;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.esquerda {
+     display: flex;
+     width: 30%;
+     flex-direction: column;
+     margin-left: 7%;
+}
+.titulo-corpo3 {
+    display: flex;
+    color: #FFE088;
+    font-family: 'Agbalumo';
+    font-size: 1.4em;
+    height: 60px;
+    width: 70%;
+}
+.descricao-corpo3 {
+    display: flex;
+    color:#e1e0ff;
+    font-family: 'Manrope';
+    font-size: small;
+    height: 60px;
+    width: 100%;
+}
+.direita {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    width: 20%;
+     margin-right: 7%;
+     font-family: 'Manrope';
+}
+
+.navegacao {
+    color: #FFE088;
+}
+.links-corpo3 {
+    display: flex;
+    flex-direction: column;
+}
+.links-corpo3 a {
+    text-decoration: none;
+    color: #e1e0ff;
+}
