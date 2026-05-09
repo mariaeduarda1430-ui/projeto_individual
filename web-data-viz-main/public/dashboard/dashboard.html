@@ -21,6 +21,7 @@
         href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Manrope:wght@200..800&family=Matemasie&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Send+Flowers&display=swap"
         rel="stylesheet">
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../css/style dash.css">
 </head>
 
@@ -55,64 +56,68 @@
                 métricas de energis soberana</span>
         </div>
         <div class="juncao">
-        <div class="caixa-grande">
-        <div class="caixa1">
-            <div class="titulo-caixa1">
-                <span>REGISTRO DO BANQUETE</span>
+            <div class="caixa-grande">
+                <div class="caixa1">
+                    <div class="titulo-caixa1">
+                        <span>REGISTRO DO BANQUETE</span>
+                    </div>
+                    <div class="info-caixa1">
+                        <span>QUANTIDADE (GRAMAS)</span>
+                        <input type="number" id="input_quantidade" placeholder="Ex: 50">
+                        <span>TIPO DE ALIMENTO</span>
+                        <input type="text" id="input_alimento" placeholder="Ex: Ração">
+                    </div>
+                    <div class="botao-caixa1">
+                        <button>☰ CONFIRMAR NUTRIÇÃO</button>
+                    </div>
+                </div>
+                <div class="caixa-pequena">
+                    <div class="esquerda-caixa-pequena">
+                        <span>PERFORMANCE ROTINA</span>
+                        <div id="mensagem-esquerda"></div>
+                    </div>
+                    <div class="direita-caixa-pequena">
+                        <span>META CALÓRICA</span>
+                        <div id="mensagem-direita"></div>
+                    </div>
+                </div>
             </div>
-            <div class="info-caixa1">
-                <span>QUANTIDADE (GRAMAS)</span>
-                <input type="number" id="input_quantidade" placeholder="Ex: 50">
-                <span>TIPO DE ALIMENTO</span>
-                <input type="text" id="input_alimento" placeholder="Ex: Ração">
+            <div class="caixa2">
+                <div class="titulo-caixa2">
+                    <span>EVOLUÇÃO VITAL</span>
+                </div>
+                <div class="subtitulo-caixa2">
+                    <span>Consenso Semanal</span>
+                </div>
+                <div class="grafico">
+                    <canvas id="mychart"></canvas>
+                </div>
             </div>
-            <div class="botao-caixa1">
-                <button>☰ CONFIRMAR NUTRIÇÃO</button>
-            </div>
-        </div>
-         <div class="caixa-pequena">
-            <div class="esquerda-caixa-pequena">
-                <span>PERFORMANCE ROTINA</span>
-                <div id="mensagem-esquerda"></div>
-            </div>
-            <div class="direita-caixa-pequena">
-                <span>META CALÓRICA</span>
-                <div id="mensagem-direita"></div>
-            </div>
-        </div>
-        </div>
-        <div class="caixa2">
-            <div class="titulo-caixa2">
-                <span>EVOLUÇÃO VITAL</span>
-            </div>
-            <div class="subtitulo-caixa2">
-                <span>Consenso Semanal</span>
-            </div>
-        </div>
         </div>
 
-       
+
     </div>
     <div class="corpo2">
         <div class="caixa3">
 
-       
-        <div class="titulo-corpo2">
-            <span>REGISTROS RECENTES</span>
+
+            <div class="titulo-corpo2">
+                <span>REGISTROS RECENTES</span>
+            </div>
+            <div class="informacao-corpo2">
+                <div id="mensagem-corpo2"></div>
+            </div>
         </div>
-        <div class="informacao-corpo2">
-            <div id="mensagem-corpo2"></div>
-        </div>
-         </div>
     </div>
     <div class="corpo3">
         <div class="esquerda">
-        <div class="titulo-corpo3">
-            <span>NutriNobre</span>
-        </div>
-        <div class="descricao-corpo3">
-            <span>Elevando a existência dos nossos companheiros através da ciência nutricional e da estética transcendental.</span>
-        </div>
+            <div class="titulo-corpo3">
+                <span>NutriNobre</span>
+            </div>
+            <div class="descricao-corpo3">
+                <span>Elevando a existência dos nossos companheiros através da ciência nutricional e da estética
+                    transcendental.</span>
+            </div>
         </div>
         <div class="direita">
             <div class="navegacao">
@@ -124,9 +129,46 @@
                 <a href="">Nutrição</a>
                 <a href="./dashboard.html">Rotina</a>
             </div>
-           
+
         </div>
     </div>
+    
 </body>
 
+
+
 </html>
+
+<script>
+    const labels = [
+        'segunda',
+        'terça',
+        'quarta',
+        'quinta',
+        'sexta',
+        'sábado',
+        'domingo',
+    ];
+
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'Quantidade',
+            backgroundColor: '#FFE088',
+            borderColor: '#917400',
+            data: [10, 100]
+        }]
+    };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {}
+    };
+</script>
+<script>
+    const mychart = new Chart(
+        document.getElementById('mychart'),
+        config
+    );
+</script>

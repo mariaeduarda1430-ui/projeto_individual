@@ -256,6 +256,13 @@ body {
   color: #00174a;
 }
 
+.grafico {
+    display: flex;
+    height: 78%;
+    width: 95%;
+    justify-content: center;
+}
+
 .corpo2 {
     display: flex;
     background-color: #f2f1f0;
