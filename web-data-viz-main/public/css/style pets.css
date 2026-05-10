@@ -5,7 +5,39 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+/*-------------------------------------------------------*/
+.agbalumo-regular {
+  /*Fonte TITULO*/
+  font-family: "Agbalumo", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 10pt;
+}
 
+.manrope-regular {
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+.manrope-bold {
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  font-size: x-small;
+}
+.noto-serif-regular {
+  font-family: "Noto Serif", serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+}
+.noto-serif-bold {
+  font-family: "Noto Serif", serif;
+  font-size: 3em;
+  font-weight: bold;
+}
+/*================================================================*/
 .cabeçalho {
   display: flex;
   justify-content: flex-start;
@@ -19,24 +51,30 @@ body {
   margin: 0;
 }
 .titulo {
-    color: #E9C349; /*cor definida para cabeçalho na pagina inicial*/
+    color: #ffe088; /*cor definida para cabeçalho na pagina inicial*/
 }
 .topicos {
   display: flex;
   gap: 30px;
-  
+  font-weight: 200;
+  font-family: 'Manrope';
 
 }
 .topicos a{
     text-decoration: none;
-    color:#FFEFCC;
+    color:#ffefcc;
     padding: 8px 16px;
 }
-.topicos a:hover {
-    color:  #AF8D11;
-}
 .topicos a.ativo {
-    color: #AF8D11;             
-    border-bottom: 3px solid #AF8D11; 
-    padding-bottom: 5px
+  color: #af8d11;
+  border-bottom: 3px solid #af8d11;
+  padding-bottom: 5px;
+}
+
+.usuario {
+  background-color: #e9c349;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  margin-left: 45%;
 }
