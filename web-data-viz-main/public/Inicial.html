@@ -203,3 +203,20 @@
 </body>
 
 </html>
+<script>
+    // Sempre que a página carregar, ele executa isso:
+    window.onload = function() {
+
+        const nomeCompleto = sessionStorage.NOME_USUARIO;
+
+        if (sessionStorage.NOME_USUARIO != null) {
+
+            const primeiroNome = nomeCompleto.split(' ')[0]
+
+            b_usuario.innerHTML = primeiroNome;
+        } else {
+            // Se tentar entrar sem logar, volta pro login
+            window.location = "login.html";
+        }
+    }
+</script>

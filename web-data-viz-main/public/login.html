@@ -62,3 +62,59 @@
     </div>
 </body>
 </html>
+<script>
+    function entrar() {
+       let email = input_email.value;
+    let senha = input_senha.value;
+
+    if (email == "" || senha == "") {
+        alert("Por favor, preencha todos os campos.");
+        return false;
+    }
+
+    console.log("FORM LOGIN: ", email);
+
+    fetch("/usuarios/autenticar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            emailServer: email,
+            senhaServer: senha
+        })
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+
+                // AQUI ESTÁ O SEGREDO: Salva os dados na sessão do navegador
+                sessionStorage.EMAIL_USUARIO = json.email; //Se o banco de dados encontrar o usuário, ele retorna os dados (id, nome, email). Nós guardamos isso na "memória" do navegador.
+                sessionStorage.NOME_USUARIO = json.nome;
+                sessionStorage.ID_USUARIO = json.id;
+
+                alert("Login realizado com sucesso! Redirecionando...");
+
+                setTimeout(function () {
+                    window.location = "./inicial.html";
+                }, 1000);
+            });
+
+        } else {
+            console.log("Houve um erro ao tentar realizar o login!");
+            resposta.text().then(texto => {
+                console.error(texto);
+                alert("Email ou senha inválidos.");
+            });
+        }
+
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+    return false;
+}
+</script>

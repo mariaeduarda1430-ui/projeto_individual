@@ -72,7 +72,7 @@
                         </div>
                         <div class="senha">
                         <p>CHAVE DE ACESSO (SENHA)<span id="mensagemsenha"></span></p>
-                        <input pass="password" oninput="validaçao()" id="input_senha"  placeholder="🔒︎ insira sua senha">
+                        <input type="password" oninput="validaçao()" id="input_senha"  placeholder="🔒︎ insira sua senha">
                         </div>
                         <div class="confirmacao">
                         <p>CONFIRMAÇÃO SENHA  <span id=mensagemconfirm></span></p>
@@ -178,7 +178,36 @@ function cadastrar() {
   }
 
   if (contador == 4) {
-    window.location = '../login/login.html';
+   // Agora enviamos os dados para o servidor
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // O nome dessas chaves deve ser o mesmo que o Controller da API espera
+        nomeServer: nome,
+        emailServer: email,
+        senhaServer: senha
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          alert("Cadastro realizado com sucesso! Redirecionando para login...");
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+    return false;
   }
 }
 
