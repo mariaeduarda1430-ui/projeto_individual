@@ -59,8 +59,8 @@
             <div class="caixa-grande">
                 <div class="caixa1">
                     <div class="titulo-caixa1">
-                        <span>REGISTRO DO BANQUETE</span> 
-                      
+                        <span>REGISTRO DO BANQUETE</span>
+
                     </div>
                     <div class="info-caixa1">
                         <span>QUANTIDADE (GRAMAS)</span>
@@ -74,7 +74,7 @@
                 </div>
                 <div class="caixa-pequena">
                     <div class="esquerda-caixa-pequena">
-                        <span>PERFORMANCE ROTINA</span>
+                        <span>PERFORMANCE DIÁRIA</span>
                         <div id="mensagem-esquerda"></div>
                     </div>
                     <div class="direita-caixa-pequena">
@@ -116,7 +116,7 @@
 
             <div class="titulo-corpo2">
                 <span>REGISTROS RECENTES</span>
-                  <button onclick="limparSemana()">Limpar registro</button>
+                <button onclick="limparSemana()">Limpar registro</button>
             </div>
             <div class="informacao-corpo2">
                 <div id="mensagem-corpo2"></div>
@@ -190,7 +190,7 @@
             backgroundColor: '#FFE088',
             borderColor: '#917400',
             data: dados_acumulados,
-            fill: true
+            fill: true // deixa a linha pintada caso seja true
         },
         //=================================================
         {
@@ -203,7 +203,7 @@
         },
         {
             label: 'Máximo Ideal',
-            data: [], // Começa vazio
+            data: [], // Começa vazio pra ser preenchido dps com a função adicionar
             borderColor: '#FF0000', // Vermelho para o máximo
             borderDash: [5, 5],
             fill: false,
@@ -225,17 +225,24 @@
         config
     );
 
+document.getElementById('mensagem-esquerda').innerHTML = `- - -`;
 
     let contador = 0
+    let min = 0;
+    let max = 0;
+
     function adicionar() {
         const petSelecionado = document.getElementById('select_pet').value;
+        
 
-    if (petSelecionado == 'nada') {
-        alert("Antes de registrar a nutrição, selecione qual pet está sendo alimentado!");
-        return; 
-    }
+        if (petSelecionado == 'nada') {
+            alert("Antes de registrar a nutrição, selecione qual pet está sendo alimentado!");
+            return;
+        }
         let quantidade = Number(input_quantidade.value);
         let comida = input_alimento.value;
+
+
         input_quantidade.value = '';
         input_alimento.value = '';
 
@@ -244,11 +251,11 @@
             // --- LÓGICA PARA SABER O DIA ATUAL ---
             const agora = new Date();
             let diaSemana = agora.getDay(); // Retorna 0 (domingo) até 6 (sábado)
-
-
-            // --- SOMAR O VALOR ---
-            // Pegamos o que já tinha naquele dia e somamos a nova quantidade
+            
+      
             dados_acumulados[diaSemana] += quantidade;
+            let totalDoDia = dados_acumulados[diaSemana];
+
 
             // Guardamos o registro da comida
             historico_comidas.push(`${comida} (${quantidade}g)`);
@@ -256,10 +263,17 @@
 
             mychart.update(); // Atualiza o gráfico
 
-            // Atualiza o texto de "Registros Recentes" que você tem no HTML
+
+            if (totalDoDia < min || totalDoDia > max) {
+                document.getElementById('mensagem-esquerda').innerHTML = `Inadequada`;
+            } else if (totalDoDia >= min && totalDoDia <= max){
+                document.getElementById('mensagem-esquerda').innerHTML = `Adequada`;
+            }
+
             document.getElementById('mensagem-corpo2').innerHTML += `
-                    <p> <span style="border-bottom: 1px solid #AF8D11"><span style="font-size: 2em; " >${labels[diaSemana]}</span> - você deu ${quantidade}g de ${comida}. Total do dia: ${dados_acumulados[diaSemana]}g  ☑</span></p>
+                    <p> <span style="border-bottom: 1px solid #AF8D11"><span style="font-size: 1.5em; " >${labels[diaSemana]}</span> - você deu ${quantidade}g de ${comida}. Total do dia: ${dados_acumulados[diaSemana]}g  ☑</span></p>
                 `
+
 
             contador++
                 ;
@@ -274,10 +288,9 @@
 
     function atualizarMetaIdeal() {
         const petSelecionado = document.getElementById('select_pet').value;
-        let min = 0;
-        let max = 0;
 
-        
+
+
 
         if (petSelecionado == 'Porquinho_da_Índia') {
             min = 30;
@@ -310,11 +323,15 @@
             min = 1;
             max = 3;
         }
-                  
+
 
         // 1. Atualiza a linha de Mínimo (Dataset índice 1)
-        mychart.data.datasets[1].data = Array(7).fill(min);
-        mychart.data.datasets[1].label = `Mínimo (${min}g)`;
+        mychart.data.datasets[1].data = Array(7).fill(min); // cria uma lista vazia com 7 espaços (dias da semana)
+        mychart.data.datasets[1].label = `Mínimo (${min}g)`; // pega essa lista e enche todos os espaços com o valor da variável min que muda toda vez que a pessoa seleciona algum bichos
+
+        //datasets[1] é a parte da lista que defini que seria o minimo
+        // datasets[0] é a primeira definição da lista com a linha que altera de acordo com oq a pessoa colocar no input
+        // ordem: pessoa seleciona um bicho | a seleção passa por um if | o valor do if vai para o min e o max | é criada uma lista (.data) com o menor e o maior valor para cada dia da semana | .label coloca isso como metrica no grafico
 
         // 2. Atualiza a linha de Máximo (Dataset índice 2)
         mychart.data.datasets[2].data = Array(7).fill(max);
@@ -329,13 +346,13 @@
         for (let i = 0; i < dados_acumulados.length; i++) {
             dados_acumulados[i] = 0;
         }
-        
+
         // 2. Limpa as mensagens do HTML
         document.getElementById('mensagem-corpo2').innerHTML = "";
-        
+
         // 3. Atualiza o gráfico para refletir o vazio
         mychart.update();
-        
+
         alert("Diário reiniciado!");
     }
 </script>

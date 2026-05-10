@@ -191,14 +191,22 @@ body {
   color: #68530c;
   height: 100%;
   width: 58%;
-  align-items: flex-start;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
   border-radius: 3px;
+  gap: 5px;
 }
 .esquerda-caixa-pequena span {
   display: flex;
   height: 40%;
   align-items: flex-end;
+}
+
+.esquerda-caixa-pequena div {
+    display: flex;
+    font-weight: bold;
+    font-size: 2em;
 }
 .direita-caixa-pequena {
   display: flex;
