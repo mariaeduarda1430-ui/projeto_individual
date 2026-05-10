@@ -431,6 +431,7 @@ body {
 .referencia2 {
   display: flex;
   width: 25%;
+  height: 70%;
   flex-direction: column;
   gap: 15px;
 }
@@ -441,7 +442,11 @@ body {
 }
 
 .topicos-refencia2 {
+ 
   font-family: 'Manrope';
+ flex-direction: column;
+  width: 30%;
+  height: 100%;
 }
 .topicos-refencia2 a{
   text-decoration: none;
