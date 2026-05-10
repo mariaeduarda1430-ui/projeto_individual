@@ -59,7 +59,8 @@
             <div class="caixa-grande">
                 <div class="caixa1">
                     <div class="titulo-caixa1">
-                        <span>REGISTRO DO BANQUETE</span>
+                        <span>REGISTRO DO BANQUETE</span> 
+                      
                     </div>
                     <div class="info-caixa1">
                         <span>QUANTIDADE (GRAMAS)</span>
@@ -78,7 +79,19 @@
                     </div>
                     <div class="direita-caixa-pequena">
                         <span>META CALÓRICA</span>
-                        <div id="mensagem-direita"></div>
+                        <select id="select_pet" onchange="atualizarMetaIdeal()">
+                            <option value="nada">Escolha um animal</option>
+                            <option value="Jabuti">Jabuti</option>
+                            <option value="Porquinho_da_Índia">Porquinho da Índia</option>
+                            <option value="CachorroP">Cachorro Pequeno</option>
+                            <option value="CachorroM">Cachorro Médio</option>
+                            <option value="CachorroG">Cachorro Grande</option>
+                            <option value="Gato">Gato</option>
+                            <option value="PeixeP">Peixe Pequeno</option>
+                            <option value="PeixeN">Peixe Grande</option>
+                            <option value="Cágado">Cágado</option>
+                            <option value="Coelho">Coelho</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -103,6 +116,7 @@
 
             <div class="titulo-corpo2">
                 <span>REGISTROS RECENTES</span>
+                  <button onclick="limparSemana()">Limpar registro</button>
             </div>
             <div class="informacao-corpo2">
                 <div id="mensagem-corpo2"></div>
@@ -117,13 +131,13 @@
                     <span>"A consistência na nutrição é o alicerce da longevidade soberana."</span>
                 </div>
                 <div class="link-corpo2">
-            <a href="#">Nutrição</a>
-        </div>
+                    <a href="#">Nutrição</a>
+                </div>
             </div>
 
         </div>
 
-        
+
     </div>
     <div class="corpo3">
         <div class="esquerda">
@@ -177,8 +191,28 @@
             borderColor: '#917400',
             data: dados_acumulados,
             fill: true
-        }]
+        },
+        //=================================================
+        {
+            label: 'Mínimo Ideal',
+            data: [], // Começa vazio
+            borderColor: '#00FF00', // Verde para o mínimo
+            borderDash: [5, 5],
+            fill: false,
+            pointRadius: 0
+        },
+        {
+            label: 'Máximo Ideal',
+            data: [], // Começa vazio
+            borderColor: '#FF0000', // Vermelho para o máximo
+            borderDash: [5, 5],
+            fill: false,
+            pointRadius: 0
+        }
+        ]
     };
+
+
 
     const config = {
         type: 'line',
@@ -191,7 +225,15 @@
         config
     );
 
+
+    let contador = 0
     function adicionar() {
+        const petSelecionado = document.getElementById('select_pet').value;
+
+    if (petSelecionado == 'nada') {
+        alert("Antes de registrar a nutrição, selecione qual pet está sendo alimentado!");
+        return; 
+    }
         let quantidade = Number(input_quantidade.value);
         let comida = input_alimento.value;
         input_quantidade.value = '';
@@ -216,12 +258,84 @@
 
             // Atualiza o texto de "Registros Recentes" que você tem no HTML
             document.getElementById('mensagem-corpo2').innerHTML += `
-                <p> <span style="border-bottom: 1px solid #AF8D11"><span style="font-size: 2em; " >${labels[diaSemana]}</span> você deu ${quantidade}g de ${comida}. Total do dia: ${dados_acumulados[diaSemana]}g  ☑</span></p>
-            `;
+                    <p> <span style="border-bottom: 1px solid #AF8D11"><span style="font-size: 2em; " >${labels[diaSemana]}</span> - você deu ${quantidade}g de ${comida}. Total do dia: ${dados_acumulados[diaSemana]}g  ☑</span></p>
+                `
+
+            contador++
+                ;
 
         } else {
             alert("Preencha a quantidade e o tipo de alimento!");
         }
 
+        //=======================================================================
+
+    }
+
+    function atualizarMetaIdeal() {
+        const petSelecionado = document.getElementById('select_pet').value;
+        let min = 0;
+        let max = 0;
+
+        
+
+        if (petSelecionado == 'Porquinho_da_Índia') {
+            min = 30;
+            max = 60;
+        } else if (petSelecionado == 'Jabuti') {
+            min = 100;
+            max = 200;
+        } else if (petSelecionado == 'CachorroP') {
+            min = 55;
+            max = 180;
+        } else if (petSelecionado == 'CachorroM') {
+            min = 180;
+            max = 320;
+        } else if (petSelecionado == 'CachorroG') {
+            min = 350;
+            max = 580;
+        } else if (petSelecionado == 'Gato') {
+            min = 160;
+            max = 250;
+        } else if (petSelecionado == 'Cágado') {
+            min = 5;
+            max = 20;
+        } else if (petSelecionado == 'PeixeP') {
+            min = 0.1;
+            max = 0.5;
+        } else if (petSelecionado == 'Coelho') {
+            min = 100;
+            max = 250;
+        } else if (petSelecionado == 'PeixeN') {
+            min = 1;
+            max = 3;
+        }
+                  
+
+        // 1. Atualiza a linha de Mínimo (Dataset índice 1)
+        mychart.data.datasets[1].data = Array(7).fill(min);
+        mychart.data.datasets[1].label = `Mínimo (${min}g)`;
+
+        // 2. Atualiza a linha de Máximo (Dataset índice 2)
+        mychart.data.datasets[2].data = Array(7).fill(max);
+        mychart.data.datasets[2].label = `Máximo (${max}g)`;
+
+        // 3. Atualiza o gráfico para mostrar as novas linhas
+        mychart.update();
+    }
+    //===============================================================
+    function limparSemana() {
+
+        for (let i = 0; i < dados_acumulados.length; i++) {
+            dados_acumulados[i] = 0;
+        }
+        
+        // 2. Limpa as mensagens do HTML
+        document.getElementById('mensagem-corpo2').innerHTML = "";
+        
+        // 3. Atualiza o gráfico para refletir o vazio
+        mychart.update();
+        
+        alert("Diário reiniciado!");
     }
 </script>
