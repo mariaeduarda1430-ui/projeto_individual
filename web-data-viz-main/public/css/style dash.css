@@ -226,7 +226,11 @@ body {
   height: 40%;
   align-items: flex-end;
 }
-
+.direita-caixa-pequena select {
+    background-color: #182b54;
+    color:#e1e0ff ;
+    
+}
 .juncao {
   display: flex;
   justify-content: space-between;
