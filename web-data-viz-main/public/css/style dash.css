@@ -238,113 +238,155 @@ body {
   width: 25%;
   justify-content: center;
   align-items: flex-end;
-  font-family: 'Manrope';
+  font-family: "Manrope";
   font-size: 14px;
   font-weight: bold;
   color: #927411;
 }
 
 .subtitulo-caixa2 {
-    display: flex;
+  display: flex;
   height: 10%;
   width: 44%;
   justify-content: center;
   align-items: flex-end;
-  font-family: 'Noto Serif';
+  font-family: "Noto Serif";
   font-size: 2em;
   font-weight: bold;
   color: #00174a;
 }
 
 .grafico {
-    display: flex;
-    height: 78%;
-    width: 95%;
-    justify-content: center;
+  display: flex;
+  height: 78%;
+  width: 95%;
+  justify-content: center;
 }
 
 .corpo2 {
+  display: flex;
+  background-color: #f2f1f0;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 60vh;
+}
+.img-corpo2 {
+  position: relative;
+  display: flex;
+  width: 40%;
+  height: auto;
+  margin-right: 3%;
+  margin-top: 1%;
+}
+.img-corpo2 img {
+  width: 100%; /* Ocupa toda a largura do pai */
+  height: auto; /* Mantém a proporção original */
+}
+
+.txt {
+  position: absolute;
+  top: 15%; /* Move o topo para o meio vertical do pai */
+  left: 6%;
+  font-family: 'Noto Serif';
+}
+
+.texto-corpo2 {
     display: flex;
-    background-color: #f2f1f0;
-    align-items: flex-start;
-    justify-content: center;
-    height: 60vh;
+    width: 70%;
+    font-size: large;
+    font-style: italic;
+}
+
+.link-corpo2 a {
+   text-decoration: none;
+   color: #cca730;
+   border-bottom: 1px solid #927411;
 }
 
 .caixa3 {
-    display: flex;
-    background-color: #ebd8b9;
-    height: 80%;
-    width: 70%;
+  display: flex;
+  background-color: #ebd8b9;
+  height: 80%;
+  width: 50%;
+  margin-left: 3%;
+  flex-direction: column;
 }
 .titulo-corpo2 {
-     display: flex;
-     height: 10%;
-     width: 25%;
-     font-family: 'Manrope';
-     font-weight: bold;
-     color: #68530c;
-     font-size: 15px;
+  display: flex;
+  height: 10%;
+  width: 25%;
+  font-family: "Manrope";
+  font-weight: bold;
+  color: #68530c;
+  font-size: 15px;
 }
 .titulo-corpo2 span {
-    display: flex;
-    height: 50px;
-    width: 100%;
-    align-items: flex-end;
-    justify-content: center;
+  display: flex;
+  height: 50px;
+  width: 100%;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .informacao-corpo2 {
-    margin-bottom: 2px solid #68530c;
+  width: 100%;
+  height: 20%;
+  margin-top: 10px;
+}
+.informacao-corpo2 div {
+  margin-left: 5%;
+  width: 100%;
+  align-items: center;
+  font-family: "Manrope";
 }
 
 .corpo3 {
-    display: flex;
-    background-color: #00174a;
-    height: 30vh;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  background-color: #00174a;
+  height: 30vh;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .esquerda {
-     display: flex;
-     width: 30%;
-     flex-direction: column;
-     margin-left: 7%;
+  display: flex;
+  width: 30%;
+  flex-direction: column;
+  margin-left: 7%;
 }
 .titulo-corpo3 {
-    display: flex;
-    color: #FFE088;
-    font-family: 'Agbalumo';
-    font-size: 1.4em;
-    height: 60px;
-    width: 70%;
+  display: flex;
+  color: #ffe088;
+  font-family: "Agbalumo";
+  font-size: 1.4em;
+  height: 60px;
+  width: 70%;
 }
 .descricao-corpo3 {
-    display: flex;
-    color:#e1e0ff;
-    font-family: 'Manrope';
-    font-size: small;
-    height: 60px;
-    width: 100%;
+  display: flex;
+  color: #e1e0ff;
+  font-family: "Manrope";
+  font-size: small;
+  height: 60px;
+  width: 100%;
 }
 .direita {
-    display: flex;
-    flex-direction: column;
-    height: 50%;
-    width: 20%;
-     margin-right: 7%;
-     font-family: 'Manrope';
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  width: 20%;
+  margin-right: 7%;
+  font-family: "Manrope";
 }
 
 .navegacao {
-    color: #FFE088;
+  color: #ffe088;
 }
 .links-corpo3 {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .links-corpo3 a {
-    text-decoration: none;
-    color: #e1e0ff;
+  text-decoration: none;
+  color: #e1e0ff;
 }

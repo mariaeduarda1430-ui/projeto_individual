@@ -68,7 +68,7 @@
                         <input type="text" id="input_alimento" placeholder="Ex: Ração">
                     </div>
                     <div class="botao-caixa1">
-                        <button>☰ CONFIRMAR NUTRIÇÃO</button>
+                        <button onclick="adicionar()">☰ CONFIRMAR NUTRIÇÃO</button>
                     </div>
                 </div>
                 <div class="caixa-pequena">
@@ -108,6 +108,22 @@
                 <div id="mensagem-corpo2"></div>
             </div>
         </div>
+
+        <div class="img-corpo2">
+            <img src="https://apaixonadosporquatropatas.com.br/wp-content/uploads/2023/11/Como-escolher-a-melhor-racao-para-o-seu-pet.jpg"
+                alt="">
+            <div class="txt">
+                <div class="texto-corpo2">
+                    <span>"A consistência na nutrição é o alicerce da longevidade soberana."</span>
+                </div>
+                <div class="link-corpo2">
+            <a href="#">Nutrição</a>
+        </div>
+            </div>
+
+        </div>
+
+        
     </div>
     <div class="corpo3">
         <div class="esquerda">
@@ -132,7 +148,7 @@
 
         </div>
     </div>
-    
+
 </body>
 
 
@@ -141,22 +157,26 @@
 
 <script>
     const labels = [
+        'domingo',
         'segunda',
         'terça',
         'quarta',
         'quinta',
         'sexta',
         'sábado',
-        'domingo',
     ];
+    const dados_acumulados = [0, 0, 0, 0, 0, 0, 0];
+    const historico_comidas = [];
+
 
     const data = {
         labels: labels,
         datasets: [{
-            label: 'Quantidade',
+            label: 'Quantidade (gramas)',
             backgroundColor: '#FFE088',
             borderColor: '#917400',
-            data: [10, 100]
+            data: dados_acumulados,
+            fill: true
         }]
     };
 
@@ -165,10 +185,43 @@
         data: data,
         options: {}
     };
-</script>
-<script>
+
     const mychart = new Chart(
         document.getElementById('mychart'),
         config
     );
+
+    function adicionar() {
+        let quantidade = Number(input_quantidade.value);
+        let comida = input_alimento.value;
+        input_quantidade.value = '';
+        input_alimento.value = '';
+
+        if (quantidade > 0 && comida != 0) {
+
+            // --- LÓGICA PARA SABER O DIA ATUAL ---
+            const agora = new Date();
+            let diaSemana = agora.getDay(); // Retorna 0 (domingo) até 6 (sábado)
+
+
+            // --- SOMAR O VALOR ---
+            // Pegamos o que já tinha naquele dia e somamos a nova quantidade
+            dados_acumulados[diaSemana] += quantidade;
+
+            // Guardamos o registro da comida
+            historico_comidas.push(`${comida} (${quantidade}g)`);
+
+
+            mychart.update(); // Atualiza o gráfico
+
+            // Atualiza o texto de "Registros Recentes" que você tem no HTML
+            document.getElementById('mensagem-corpo2').innerHTML += `
+                <p> <span style="border-bottom: 1px solid #AF8D11"><span style="font-size: 2em; " >${labels[diaSemana]}</span> você deu ${quantidade}g de ${comida}. Total do dia: ${dados_acumulados[diaSemana]}g  ☑</span></p>
+            `;
+
+        } else {
+            alert("Preencha a quantidade e o tipo de alimento!");
+        }
+
+    }
 </script>
