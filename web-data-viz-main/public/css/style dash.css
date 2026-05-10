@@ -383,6 +383,7 @@ body {
 .corpo3 {
   display: flex;
   background-color: #00174a;
+  border-top: 3px solid #735c00;
   height: 30vh;
   align-items: center;
   justify-content: space-between;
@@ -421,9 +422,9 @@ body {
 
 .navegacao {
   color: #ffe088;
+  font-size: 1.4em;
 }
 .links-corpo3 {
-  display: flex;
   flex-direction: column;
 }
 .links-corpo3 a {
