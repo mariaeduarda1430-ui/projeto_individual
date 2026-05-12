@@ -129,10 +129,13 @@ body {
   position: relative;
   width: 30%;
   height: 100%;
+  
 }
 .jabuti-foto1 img{
  width: 100%; /* Ocupa toda a largura do pai */
   height: 100%;
+  box-shadow: inset black 0px 50px 100px;
+  
 }
 
 .texto-foto1 {
@@ -160,5 +163,33 @@ body {
   color: #ffe088;
   font-family: 'Noto Serif';
   font-size: 2em;
+  font-weight: bold;
+}
+
+.baixo-foto1 {
+  display: flex;
+  background-color:#ffffff;
+  height: 40%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Manrope';
+}
+.descricao-foto1{
+  width: 90%;
+  height: 40%;
+  color: rgb(93, 88, 88);
+}
+.link-foto1 {
+  display: flex;
+  justify-content: flex-start;
+  width: 90%;
+  
+  
+}
+.link-foto1 a {
+  text-decoration: none;
+  color: #af8d11;
   font-weight: bold;
 }
