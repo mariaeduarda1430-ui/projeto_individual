@@ -185,10 +185,73 @@ body {
   display: flex;
   justify-content: flex-start;
   width: 90%;
-  
-  
 }
 .link-foto1 a {
+  text-decoration: none;
+  color: #af8d11;
+  font-weight: bold;
+}
+
+
+.cagado-foto2 { 
+  position: relative;
+  width: 30%;
+  height: 100%;
+}
+.cagado-foto2 img{
+ width: 100%; 
+  height: 100%;
+  box-shadow: inset black 0px 50px 100px;
+  
+}
+.texto-foto2{
+  position: absolute;
+  top: 75%; /* Move o topo para o meio vertical do pai */
+  left: 6%;
+  width: 30%;
+  height: 20%;
+}
+.classe-foto2 {
+  display: flex;
+  background-color:#e9c349;
+  color: #7b6309;
+  font-family: "Manrope";
+  font-size: medium;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  width: 60%;
+  height: 30%;
+  border-radius: 10px;
+}
+.epecie-foto2 {
+  display: flex;
+  color: #ffe088;
+  font-family: 'Noto Serif';
+  font-size: 2em;
+  font-weight: bold;
+}
+.baixo-foto2 {
+  display: flex;
+  background-color:#ffffff;
+  height: 40%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Manrope';
+}
+.descricao-foto2{
+  width: 90%;
+  height: 40%;
+  color: rgb(93, 88, 88);
+}
+.link-foto2 {
+  display: flex;
+  justify-content: flex-start;
+  width: 90%;
+}
+.link-foto2 a {
   text-decoration: none;
   color: #af8d11;
   font-weight: bold;
