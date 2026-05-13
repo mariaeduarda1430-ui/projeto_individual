@@ -115,27 +115,26 @@ body {
   width: 40%;
   color: rgb(93, 88, 88);
 }
-
+/*=============CORPO2=================*/
 .corpo2 {
-  background-color:  #f2f1f0;
-  height: 100vh;
+  background-color: #f2f1f0;
+  height: 220vh;
 }
 .foto-fileira1 {
   display: flex;
   justify-content: space-around;
-  height: 50%;
+  height: 22%;
 }
-.jabuti-foto1 { /*DEFINIÇÃO DO TAMANHO DA IMAGEM DO JABUTI*/
+.foto {
+  /*DEFINIÇÃO DO TAMANHO DA IMAGEM DO JABUTI*/
   position: relative;
   width: 30%;
   height: 100%;
-  
 }
-.jabuti-foto1 img{
- width: 100%; /* Ocupa toda a largura do pai */
+.foto img {
+  width: 100%; /* Ocupa toda a largura do pai */
   height: 100%;
   box-shadow: inset black 0px 50px 100px;
-  
 }
 
 .texto-foto {
@@ -147,7 +146,7 @@ body {
 }
 .classe-foto {
   display: flex;
-  background-color:#e9c349;
+  background-color: #e9c349;
   color: #7b6309;
   font-family: "Manrope";
   font-size: medium;
@@ -161,22 +160,22 @@ body {
 .epecie-foto {
   display: flex;
   color: #ffe088;
-  font-family: 'Noto Serif';
+  font-family: "Noto Serif";
   font-size: 2em;
   font-weight: bold;
 }
 
 .baixo-foto {
   display: flex;
-  background-color:#ffffff;
+  background-color: #ffffff;
   height: 40%;
   width: 100%;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-family: 'Manrope';
+  font-family: "Manrope";
 }
-.descricao-foto{
+.descricao-foto {
   width: 90%;
   height: 40%;
   color: rgb(93, 88, 88);
@@ -192,35 +191,9 @@ body {
   font-weight: bold;
 }
 
-
-.cagado-foto2 { 
-  position: relative;
-  width: 30%;
-  height: 100%;
-}
-.cagado-foto2 img{
- width: 100%; 
-  height: 100%;
-  box-shadow: inset black 0px 50px 100px;
-  
-}
-
-.peixe-foto3 { 
-  position: relative;
-  width: 30%;
-  height: 100%;
-}
-.peixe-foto3 img{
- width: 100%; 
-  height: 100%;
-  box-shadow: inset black 0px 50px 100px;
-  
-}
-
-
 .classe-foto3 {
   display: flex;
-  background-color:#e9c349;
+  background-color: #e9c349;
   color: #7b6309;
   font-family: "Manrope";
   font-size: medium;
@@ -234,8 +207,108 @@ body {
 .epecie-foto3 {
   display: flex;
   color: #ffe088;
-  font-family: 'Noto Serif';
+  font-family: "Noto Serif";
   font-size: 2em;
   font-weight: bold;
   width: 300px;
 }
+
+/*==============================================*/
+
+.foto-fileira2 {
+  display: flex;
+  justify-content: space-around;
+  height: 22%;
+  margin-top: 13%;
+}
+
+.foto-fileira3 {
+  display: flex;
+  justify-content: flex-start;
+  height: 22%;
+  margin-top: 13%;
+  margin-left: 2%;
+}
+
+.classe-foto6 {
+   display: flex;
+  background-color: #e9c349;
+  color: #7b6309;
+  font-family: "Manrope";
+  font-size: medium;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  width: 90%;
+  height: 30%;
+  border-radius: 10px;
+}
+
+.classe-foto7 {
+  display: flex;
+  background-color: #e9c349;
+  color: #7b6309;
+  font-family: "Manrope";
+  font-size: medium;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  width: 80%;
+  height: 30%;
+  border-radius: 10px;
+}
+
+.epecie-foto7 {
+   display: flex;
+  color: #ffe088;
+  font-family: "Noto Serif";
+  font-size: 2em;
+  font-weight: bold;
+  width: 400px;
+}
+
+/*============= CORPO 3 =============*/
+.corpo3 {
+  display: flex;
+  background-color:#f2f1f0;
+  justify-content: center;
+  height: 70vh;
+  font-family: 'Manrope';
+}
+.caixa-corpo3 {
+  display: flex;
+  align-items: center;
+  background-color:#f8f2e4 ;
+  width: 70%;
+  height: 80%;
+  border: 3px solid #c89c18;
+  margin-top: 3%;
+}
+
+.descricao-corpo3{
+  display: flex;
+  width: 60%;
+  margin-left: 2%;
+  font-size: 1.5em;
+  color: #00174a;
+  flex-direction: column;
+  gap: 80px;
+}
+.descricao-corpo3 span:nth-child(2) {
+  color: #7b6309;
+  font-weight: bold;
+}
+.foto-corpo3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+   width: 35%;
+  height: 90%;
+  border: 3px solid #c89c18;
+}
+.foto-corpo3 img{
+  display: flex;
+  height: 90%;
+  width: 85%;
+}
+
