@@ -278,7 +278,7 @@ body {
 .caixa-corpo3 {
   display: flex;
   align-items: center;
-  background-color:#f8f2e4 ;
+  background-color:#f9f9f9 ;
   width: 70%;
   height: 80%;
   border: 3px solid #c89c18;
@@ -289,7 +289,7 @@ body {
   display: flex;
   width: 60%;
   margin-left: 2%;
-  font-size: 1.5em;
+  font-size: 1.2em;
   color: #00174a;
   flex-direction: column;
   gap: 80px;
@@ -311,4 +311,58 @@ body {
   height: 90%;
   width: 85%;
 }
+
+/*============== CORPO 4 ===============*/
+
+.corpo4 {
+  display: flex;
+  background-color: #00174A;
+  border-top: 3px solid #735c00;
+  height: 30vh;
+  align-items: center;
+ justify-content: space-around;
+}
+.referencia1 {
+  display: flex;
+  width: 25%;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.titulo-referencia1 {
+  font-family: 'Agbalumo';
+  color: #E9C349;
+  font-size: 1.4em;
+}
+.descricao-referencia1 {  
+  font-family: 'Manrope';
+  color: #bbb9b9;
+}
+
+.referencia2 {
+  display: flex;
+  width: 25%;
+  height: 70%;
+  flex-direction: column;
+  gap: 15px;
+}
+.titulo-referencia2 {
+  font-family: 'Noto Serif';
+  color: #ffe088;
+  font-size: 1.4em;
+}
+
+.topicos-refencia2 {
+ 
+  font-family: 'Manrope';
+ flex-direction: column;
+  width: 30%;
+  height: 100%;
+}
+.topicos-refencia2 a{
+  text-decoration: none;
+  color:#bbb9b9;
+  padding: 8px 16px;
+}
+
 

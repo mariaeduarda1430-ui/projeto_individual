@@ -320,6 +320,7 @@ body {
 .caixa3 {
   display: flex;
   background-color: #ebd8b9;
+  border: 2px solid #AF8D11;
   height: 80%;
   width: 50%;
   margin-left: 3%;
@@ -430,6 +431,7 @@ body {
 }
 .links-corpo3 {
   flex-direction: column;
+
 }
 .links-corpo3 a {
   text-decoration: none;

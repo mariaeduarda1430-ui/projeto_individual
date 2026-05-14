@@ -392,10 +392,12 @@ body {
   color: #FFEFCC;
 }
 .descricao-caixa03 {
+  display: flex;
   font-family: "Manrope";
   font-size: 15px;
   color:  #f2f1f0;
   width: 90%;
+  
 }
 .caixas1a3 {
   display: flex;
