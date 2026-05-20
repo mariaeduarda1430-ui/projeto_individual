@@ -1,48 +1,43 @@
-var medidaModel = require("../models/medidaModel");
+var medidamodel = require("../models/medidaModel");
 
-function buscarUltimasMedidas(req, res) {
+function registrar(req, res) {
+    var quantidade = req.body.pesoServer;
+    var comida = req.body.comidaServer;
+    var petSelecionado = req.body.tipoAnimalServer; 
+    var fkUsuario = req.body.fkUsuarioServer;       
 
-    const limite_linhas = 7;
+    console.log(`[Controller] Tentando Registrar - Peso: ${quantidade}, Alimento: ${comida}, Animal: ${petSelecionado}, Usuário: ${fkUsuario}`);
 
-    var idAquario = req.params.idAquario;
+    // Validação de segurança para impedir qualquer injeção de undefined no SQL
+    if (quantidade == 'undefined' || comida == 'undefined' || petSelecionado == 'undefined' || petSelecionado == "nada" || fkUsuario == 'undefined') {
+        return res.status(400).send("Seus dados estão vindo como undefined ou inválidos no Controller!");
+    }
 
-    console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
-
-    medidaModel.buscarUltimasMedidas(idAquario, limite_linhas).then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
+    // Corrigido o nome do objeto medidamodel de acordo com o require do seu arquivo
+    medidamodel.registrar(quantidade, comida, petSelecionado, fkUsuario)
+        .then(function (resultado) {
+            res.status(201).json(resultado);
+        })
+        .catch(function (erro) {
+            console.log("Erro no Controller ao registrar:", erro);
+            res.status(500).json(erro.sqlMessage);
+        });
 }
 
+function buscardash(req, res) {
+    var idAnimal = req.params.idAnimal;
 
-function buscarMedidasEmTempoReal(req, res) {
-
-    var idAquario = req.params.idAquario;
-
-    console.log(`Recuperando medidas em tempo real`);
-
-    medidaModel.buscarMedidasEmTempoReal(idAquario).then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
+    medidamodel.buscardash(idAnimal)
+        .then(function (resultado) {
+            res.json(resultado);
+        })
+        .catch(function (erro) {
+            console.log(erro);
+            res.status(500).json(erro.sqlMessage);
+        });
 }
 
 module.exports = {
-    buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
-
-}
+    registrar,
+    buscardash
+};

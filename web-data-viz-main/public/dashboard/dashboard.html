@@ -35,7 +35,7 @@
             <div class="manrope-regular">
                 <a href="../Inicial.html">Início</a>
                 <a href="../pets.html">Pets</a>
-                
+
                 <a href="../nutricao.html">Nutrição</a>
                 <a href="./dashboard.html" class="ativo">Rotina</a>
             </div>
@@ -82,13 +82,13 @@
                         <select id="select_pet" onchange="atualizarMetaIdeal()">
                             <option value="nada">Escolha um animal</option>
                             <option value="Jabuti">Jabuti</option>
-                            <option value="Porquinho_da_Índia">Porquinho da Índia</option>
-                            <option value="CachorroP">Cachorro Pequeno</option>
-                            <option value="CachorroM">Cachorro Médio</option>
-                            <option value="CachorroG">Cachorro Grande</option>
+                            <option value="Porquinho da Índia">Porquinho da Índia</option>
+                            <option value="Cachorro Pequeno">Cachorro Pequeno</option>
+                            <option value="Cachorro Médio">Cachorro Médio</option>
+                            <option value="Cachorro Grande">Cachorro Grande</option>
                             <option value="Gato">Gato</option>
-                            <option value="PeixeP">Peixe Pequeno</option>
-                            <option value="PeixeN">Peixe Grande</option>
+                            <option value="Peixe Pequeno">Peixe Pequeno</option>
+                            <option value="Peixe Grande">Peixe Grande</option>
                             <option value="Cágado">Cágado</option>
                             <option value="Coelho">Coelho</option>
                         </select>
@@ -156,7 +156,7 @@
             <div class="links-corpo3">
                 <a href="../Inicial.html">Início</a><br>
                 <a href="../pets.html">Pets</a><br>
-                
+
                 <a href="../nutricao.html">Nutrição</a><br>
                 <a href="./dashboard/dashboard.html">Rotina</a>
             </div>
@@ -226,20 +226,24 @@
         config
     );
 
-document.getElementById('mensagem-esquerda').innerHTML = `- - -`;
+    document.getElementById('mensagem-esquerda').innerHTML = `- - -`;
 
     let contador = 0
     let min = 0;
     let max = 0;
 
     function adicionar() {
+        var idUsuarioVar = sessionStorage.ID_USUARIO;
         const petSelecionado = document.getElementById('select_pet').value;
-        
+
 
         if (petSelecionado == 'nada') {
             alert("Antes de registrar a nutrição, selecione qual pet está sendo alimentado!");
             return;
         }
+
+
+
         let quantidade = Number(input_quantidade.value);
         let comida = input_alimento.value;
 
@@ -249,11 +253,52 @@ document.getElementById('mensagem-esquerda').innerHTML = `- - -`;
 
         if (quantidade > 0 && comida != 0) {
 
-            // --- LÓGICA PARA SABER O DIA ATUAL ---
+
+
+            if (quantidade <= 0 || comida.trim() == "") {
+                alert("Preencha a quantidade e o tipo de alimento!");
+                return;
+            }
+
+            var dadosCorpo = {
+                pesoServer: quantidade,
+                comidaServer: comida,
+
+            };
+            var animalSelecionado = petSelecionado; // Pega o pet válido do select lá de cima
+            var fkUsuarioLogado = idUsuarioVar;
+
+           
+
+            fetch("/medidas/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    pesoServer: quantidade,
+                    comidaServer: comida,
+                    tipoAnimalServer: animalSelecionado,
+                    fkUsuarioServer: fkUsuarioLogado
+                })
+            })
+                .then(function (resposta) {
+                    if (resposta.ok) {
+                        console.log("Dados gravados com sucesso no banco de dados!");
+                    } else {
+                        console.error("Erro ao enviar dados para o banco.");
+                        resposta.text().then(texto => console.error("Detalhe do erro:", texto));
+                    }
+                })
+                .catch(function (erro) {
+                    console.error("Erro na requisição FETCH:", erro);
+                });
+
+            // --- SABER O DIA ATUAL ---
             const agora = new Date();
             let diaSemana = agora.getDay(); // Retorna 0 (domingo) até 6 (sábado)
-            
-      
+
+
             dados_acumulados[diaSemana] += quantidade;
             let totalDoDia = dados_acumulados[diaSemana];
 
@@ -264,10 +309,9 @@ document.getElementById('mensagem-esquerda').innerHTML = `- - -`;
 
             mychart.update(); // Atualiza o gráfico
 
-
             if (totalDoDia < min || totalDoDia > max) {
                 document.getElementById('mensagem-esquerda').innerHTML = `Inadequada`;
-            } else if (totalDoDia >= min && totalDoDia <= max){
+            } else if (totalDoDia >= min && totalDoDia <= max) {
                 document.getElementById('mensagem-esquerda').innerHTML = `Adequada`;
             }
 
@@ -293,19 +337,19 @@ document.getElementById('mensagem-esquerda').innerHTML = `- - -`;
 
 
 
-        if (petSelecionado == 'Porquinho_da_Índia') {
+        if (petSelecionado == 'Porquinho da Índia') {
             min = 30;
             max = 160;
         } else if (petSelecionado == 'Jabuti') {
             min = 100;
             max = 200;
-        } else if (petSelecionado == 'CachorroP') {
+        } else if (petSelecionado == 'Cachorro Pequeno') {
             min = 55;
             max = 180;
-        } else if (petSelecionado == 'CachorroM') {
+        } else if (petSelecionado == 'Cachorro Médio') {
             min = 180;
             max = 320;
-        } else if (petSelecionado == 'CachorroG') {
+        } else if (petSelecionado == 'Cachorro Grande') {
             min = 350;
             max = 580;
         } else if (petSelecionado == 'Gato') {
@@ -314,13 +358,13 @@ document.getElementById('mensagem-esquerda').innerHTML = `- - -`;
         } else if (petSelecionado == 'Cágado') {
             min = 5;
             max = 20;
-        } else if (petSelecionado == 'PeixeP') {
+        } else if (petSelecionado == 'Peixe Pequeno') {
             min = 0.1;
             max = 0.5;
         } else if (petSelecionado == 'Coelho') {
             min = 100;
             max = 250;
-        } else if (petSelecionado == 'PeixeN') {
+        } else if (petSelecionado == 'Peixe Grande') {
             min = 1;
             max = 3;
         }
@@ -357,18 +401,23 @@ document.getElementById('mensagem-esquerda').innerHTML = `- - -`;
         alert("Diário reiniciado!");
     }
     //===============================================================
-     window.onload = function () {
+    window.onload = function () {
 
         const nomeCompleto = sessionStorage.NOME_USUARIO;
+        const idUsuarioLogado = sessionStorage.ID_USUARIO;
 
-        if (sessionStorage.NOME_USUARIO != null) {
+        if (sessionStorage.NOME_USUARIO != null && idUsuarioLogado != null) {
 
             const primeiroNome = nomeCompleto.split(' ')[0] // separa o nome em uma lista ent se eu colocar 'Maria Eduarda' ele faz ['Maria', 'Eduarda']
 
             b_usuario.innerHTML = primeiroNome;
+
+            
         } else {
             // Se tentar entrar sem logar, volta pro login
             window.location = "login.html";
         }
+
+        
     }
 </script>

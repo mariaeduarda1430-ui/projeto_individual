@@ -18,7 +18,7 @@ especie varchar(45)
 
 create table animal (
 idAnimal int primary key auto_increment,
-tipo varchar(45),
+tipo varchar(60),
 fkusuario int,
 fkcaracteristica int,
 constraint fkusuario_const foreign key (fkusuario) references usuario(idUsuario),
@@ -27,7 +27,7 @@ constraint fkcaracteristica_const foreign key (fkcaracteristica) references cara
 
 create table Comida (
 idcomida int primary key auto_increment,
-peso decimal(4,2),
+peso decimal(6,2),
 comida varchar(45),
 dtcomida datetime,
 fkanimal int,
