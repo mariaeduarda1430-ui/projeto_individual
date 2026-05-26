@@ -171,7 +171,7 @@
 </html>
 
 <script>
-    const labels = [
+   const labels = [
         'domingo',
         'segunda',
         'terça',
@@ -182,7 +182,9 @@
     ];
     const dados_acumulados = [0, 0, 0, 0, 0, 0, 0];
     const historico_comidas = [];
-
+    
+    // Variável global para guardar todos os registros brutos vindos do banco de dados
+    let dadosBanco = []; 
 
     const data = {
         labels: labels,
@@ -191,29 +193,25 @@
             backgroundColor: '#FFE088',
             borderColor: '#917400',
             data: dados_acumulados,
-            fill: true // deixa a linha pintada caso seja true
+            fill: true 
         },
-        //=================================================
         {
             label: 'Mínimo Ideal',
-            data: [], // Começa vazio
-            borderColor: '#00FF00', // Verde para o mínimo
+            data: [], 
+            borderColor: '#00FF00', 
             borderDash: [5, 5],
             fill: false,
             pointRadius: 0
         },
         {
             label: 'Máximo Ideal',
-            data: [], // Começa vazio pra ser preenchido dps com a função adicionar
-            borderColor: '#FF0000', // Vermelho para o máximo
+            data: [], 
+            borderColor: '#FF0000', 
             borderDash: [5, 5],
             fill: false,
             pointRadius: 0
-        }
-        ]
+        }]
     };
-
-
 
     const config = {
         type: 'line',
@@ -228,47 +226,28 @@
 
     document.getElementById('mensagem-esquerda').innerHTML = `- - -`;
 
-    let contador = 0
+    let contador = 0;
     let min = 0;
     let max = 0;
 
     function adicionar() {
         var idUsuarioVar = sessionStorage.ID_USUARIO;
-        const petSelecionado = document.getElementById('select_pet').value;
+        var mensagem =  document.getElementById('mensagem-corpo2').value;
 
+        const petSelecionado = document.getElementById('select_pet').value;
 
         if (petSelecionado == 'nada') {
             alert("Antes de registrar a nutrição, selecione qual pet está sendo alimentado!");
             return;
-        }
-
-
+        }   
 
         let quantidade = Number(input_quantidade.value);
         let comida = input_alimento.value;
 
-
         input_quantidade.value = '';
         input_alimento.value = '';
 
-        if (quantidade > 0 && comida != 0) {
-
-
-
-            if (quantidade <= 0 || comida.trim() == "") {
-                alert("Preencha a quantidade e o tipo de alimento!");
-                return;
-            }
-
-            var dadosCorpo = {
-                pesoServer: quantidade,
-                comidaServer: comida,
-
-            };
-            var animalSelecionado = petSelecionado; // Pega o pet válido do select lá de cima
-            var fkUsuarioLogado = idUsuarioVar;
-
-           
+        if (quantidade > 0 && comida.trim() != "") {
 
             fetch("/medidas/cadastrar", {
                 method: "POST",
@@ -278,146 +257,193 @@
                 body: JSON.stringify({
                     pesoServer: quantidade,
                     comidaServer: comida,
-                    tipoAnimalServer: animalSelecionado,
-                    fkUsuarioServer: fkUsuarioLogado
+                    tipoAnimalServer: petSelecionado,
+                    fkUsuarioServer: idUsuarioVar,
+                    textoServer: mensagem
                 })
             })
-                .then(function (resposta) {
-                    if (resposta.ok) {
-                        console.log("Dados gravados com sucesso no banco de dados!");
-                    } else {
-                        console.error("Erro ao enviar dados para o banco.");
-                        resposta.text().then(texto => console.error("Detalhe do erro:", texto));
-                    }
-                })
-                .catch(function (erro) {
-                    console.error("Erro na requisição FETCH:", erro);
-                });
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    
+                    carregarGraficos(); 
+                } else {
+                    console.error("Erro ao enviar dados para o banco.");
+                }
+            })
+            .catch(function (erro) {
+                console.error("Erro na requisição FETCH:", erro);
+            });
 
-            // --- SABER O DIA ATUAL ---
+            // Código para feedback imediato na tela enquanto o fetch processa
             const agora = new Date();
-            let diaSemana = agora.getDay(); // Retorna 0 (domingo) até 6 (sábado)
-
+            let diaSemana = agora.getDay();
 
             dados_acumulados[diaSemana] += quantidade;
-            let totalDoDia = dados_acumulados[diaSemana];
-
-
-            // Guardamos o registro da comida
             historico_comidas.push(`${comida} (${quantidade}g)`);
 
+            mychart.update();
 
-            mychart.update(); // Atualiza o gráfico
-
-            if (totalDoDia < min || totalDoDia > max) {
+            if (dados_acumulados[diaSemana] < min || dados_acumulados[diaSemana] > max) {
                 document.getElementById('mensagem-esquerda').innerHTML = `Inadequada`;
-            } else if (totalDoDia >= min && totalDoDia <= max) {
+            } else {
                 document.getElementById('mensagem-esquerda').innerHTML = `Adequada`;
             }
 
-            document.getElementById('mensagem-corpo2').innerHTML += `
-                    <p> <span style="border-bottom: 1px solid #AF8D11"><span style="font-size: 1.5em; " >${labels[diaSemana]}</span> - você deu ${quantidade}g de ${comida}. Total do dia: ${dados_acumulados[diaSemana]}g  ☑</span></p>
-                `
-
-
-            contador++
-                ;
-
+            contador++;
         } else {
             alert("Preencha a quantidade e o tipo de alimento!");
         }
-
-        //=======================================================================
-
     }
 
     function atualizarMetaIdeal() {
         const petSelecionado = document.getElementById('select_pet').value;
 
-
-
-
-        if (petSelecionado == 'Porquinho da Índia') {
-            min = 30;
-            max = 160;
-        } else if (petSelecionado == 'Jabuti') {
-            min = 100;
-            max = 200;
-        } else if (petSelecionado == 'Cachorro Pequeno') {
-            min = 55;
-            max = 180;
-        } else if (petSelecionado == 'Cachorro Médio') {
-            min = 180;
-            max = 320;
-        } else if (petSelecionado == 'Cachorro Grande') {
-            min = 350;
-            max = 580;
-        } else if (petSelecionado == 'Gato') {
-            min = 160;
-            max = 250;
-        } else if (petSelecionado == 'Cágado') {
-            min = 5;
-            max = 20;
-        } else if (petSelecionado == 'Peixe Pequeno') {
-            min = 0.1;
-            max = 0.5;
-        } else if (petSelecionado == 'Coelho') {
-            min = 100;
-            max = 250;
-        } else if (petSelecionado == 'Peixe Grande') {
-            min = 1;
-            max = 3;
-        }
-
-
-        // 1. Atualiza a linha de Mínimo (Dataset índice 1)
-        mychart.data.datasets[1].data = Array(7).fill(min); // cria uma lista vazia com 7 espaços (dias da semana)
-        mychart.data.datasets[1].label = `Mínimo (${min}g)`; // pega essa lista e enche todos os espaços com o valor da variável min que muda toda vez que a pessoa seleciona algum bichos
-
-        //datasets[1] é a parte da lista que defini que seria o minimo
-        // datasets[0] é a primeira definição da lista com a linha que altera de acordo com oq a pessoa colocar no input
-        // ordem: pessoa seleciona um bicho | a seleção passa por um if | o valor do if vai para o min e o max | é criada uma lista (.data) com o menor e o maior valor para cada dia da semana | .label coloca isso como metrica no grafico
-
-        // 2. Atualiza a linha de Máximo (Dataset índice 2)
-        mychart.data.datasets[2].data = Array(7).fill(max);
-        mychart.data.datasets[2].label = `Máximo (${max}g)`;
-
-        // 3. Atualiza o gráfico para mostrar as novas linhas
-        mychart.update();
-    }
-    //===============================================================
-    function limparSemana() {
-
+        // 1. Zera o vetor de acumulação do gráfico antes de recalcular
         for (let i = 0; i < dados_acumulados.length; i++) {
             dados_acumulados[i] = 0;
         }
-
-        // 2. Limpa as mensagens do HTML
+        
         document.getElementById('mensagem-corpo2').innerHTML = "";
+        document.getElementById('mensagem-esquerda').innerHTML = `- - -`;
+        contador = 0;
 
-        // 3. Atualiza o gráfico para refletir o vazio
+        if (petSelecionado == 'nada') {
+            min = 0;
+            max = 0;
+            mychart.data.datasets[1].data = [];
+            mychart.data.datasets[2].data = [];
+            mychart.data.datasets[0].data = [0, 0, 0, 0, 0, 0, 0];
+            mychart.update();
+            return;
+        }
+
+        // Definição das metas com base no pet selecionado
+        if (petSelecionado == 'Porquinho da Índia') { min = 30; max = 160; }
+        else if (petSelecionado == 'Jabuti') { min = 100; max = 200; }
+        else if (petSelecionado == 'Cachorro Pequeno') { min = 55; max = 180; }
+        else if (petSelecionado == 'Cachorro Médio') { min = 180; max = 320; }
+        else if (petSelecionado == 'Cachorro Grande') { min = 350; max = 580; }
+        else if (petSelecionado == 'Gato') { min = 160; max = 250; }
+        else if (petSelecionado == 'Cágado') { min = 5; max = 20; }
+        else if (petSelecionado == 'Peixe Pequeno') { min = 0.1; max = 0.5; }
+        else if (petSelecionado == 'Coelho') { min = 100; max = 250; }
+        else if (petSelecionado == 'Peixe Grande') { min = 1; max = 3; }
+
+        // 2. FILTRAGEM DINÂMICA: Varre os dados do banco e calcula as somas apenas para o animal escolhido
+        dadosBanco.forEach(registro => {
+    if (registro.tipo === petSelecionado) {
+        // Passa a data do banco direto para o construtor. 
+        // Se ela vier como ISO String (ex: 2026-05-20T21:00:00.000Z), o JS já converte para o seu fuso local.
+        const dataRegistro = new Date(registro.dtcomida);
+        const diaSemana = dataRegistro.getDay();
+        const peso = Number(registro.peso);
+
+        if (diaSemana >= 0 && diaSemana <= 6) {
+            dados_acumulados[diaSemana] += peso;
+        }
+    }
+});
+
+// 3. Renderiza a lista visual filtrada apenas com o histórico do pet ativo
+dadosBanco.forEach(registro => {
+    if (registro.tipo === petSelecionado) {
+        const dataRegistro = new Date(registro.dtcomida);
+        const diaSemana = dataRegistro.getDay();
+        
+        // Formata usando o fuso horário local do navegador do usuário
+        const dataFormatada = dataRegistro.toLocaleDateString('pt-BR');
+        const horaFormatada = dataRegistro.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+        document.getElementById('mensagem-corpo2').innerHTML += `
+            <p> 
+                <span style="border-bottom: 1px solid #AF8D11; display: block; padding: 4px 0;">
+                    <strong>${labels[diaSemana]} (${dataFormatada} às ${horaFormatada})</strong> - 
+                    Pet: <u>${registro.tipo}</u> comeu ${registro.peso}g de <em>${registro.comida}</em>. Total acumulado do pet no dia: ${dados_acumulados[diaSemana]}g ☑
+                </span>
+            </p>
+        `;
+    }
+});
+
+        // 4. Atualiza o semáforo de performance com base no total do bicho filtrado hoje
+        const hoje = new Date().getDay();
+        const totalHoje = dados_acumulados[hoje];
+
+        if (totalHoje == 0) {
+            document.getElementById('mensagem-esquerda').innerHTML = `- - -`;
+        } else if (totalHoje < min || totalHoje > max) {
+            document.getElementById('mensagem-esquerda').innerHTML = `Inadequada`;
+        } else {
+            document.getElementById('mensagem-esquerda').innerHTML = `Adequada`;
+        }
+
+        // 5. Atualiza as linhas e as métricas do Chart.js
+        mychart.data.datasets[0].data = [...dados_acumulados];
+        mychart.data.datasets[1].data = Array(7).fill(min);
+        mychart.data.datasets[1].label = `Mínimo (${min}g)`;
+        mychart.data.datasets[2].data = Array(7).fill(max);
+        mychart.data.datasets[2].label = `Máximo (${max}g)`;
+
         mychart.update();
+    }
 
+    function limparSemana() {
+        for (let i = 0; i < dados_acumulados.length; i++) {
+            dados_acumulados[i] = 0;
+        }
+        document.getElementById('mensagem-corpo2').innerHTML = "";
+        mychart.update();
         alert("Diário reiniciado!");
     }
-    //===============================================================
-    window.onload = function () {
 
+    window.onload = function () {
         const nomeCompleto = sessionStorage.NOME_USUARIO;
         const idUsuarioLogado = sessionStorage.ID_USUARIO;
 
         if (sessionStorage.NOME_USUARIO != null && idUsuarioLogado != null) {
-
-            const primeiroNome = nomeCompleto.split(' ')[0] // separa o nome em uma lista ent se eu colocar 'Maria Eduarda' ele faz ['Maria', 'Eduarda']
-
+            const primeiroNome = nomeCompleto.split(' ')[0];
             b_usuario.innerHTML = primeiroNome;
-
-            
+            carregarGraficos();
         } else {
-            // Se tentar entrar sem logar, volta pro login
             window.location = "login.html";
         }
+    }
 
+    function carregarGraficos() {
+        const idUsuario = sessionStorage.ID_USUARIO;
+
+        fetch(`/medidas/dashboard/${idUsuario}`)
+            .then((res) => res.json())
+            .then((dados) => {
+                dadosBanco = dados; // Salva o retorno atualizado na variável global
+                
+                const petSelecionado = document.getElementById('select_pet').value;
+                
+                // SE o usuário já tiver escolhido um pet, apenas atualiza os dados dele na tela
+                if (petSelecionado !== "nada") {
+                    atualizarMetaIdeal();
+                } else {
+                    // Se for o primeiro carregamento da página (onde está "nada"), roda o reset inicial
+                    atualizarGraficoAoIniciar();
+                }
+            })
+            .catch((erro) => console.error("Erro ao carregar dados do gráfico:", erro));
+    }
+
+    function atualizarGraficoAoIniciar() {
+        console.log("Dados recebidos e salvos globalmente:", dadosBanco);
+
+        // Reseta o gráfico e o select APENAS quando a página abre pela primeira vez
+        for (let i = 0; i < dados_acumulados.length; i++) {
+            dados_acumulados[i] = 0;
+        }
+        document.getElementById('mensagem-corpo2').innerHTML = "<p style='color: gray;'>Selecione um animal para visualizar o histórico específico.</p>";
+        document.getElementById('select_pet').value = "nada";
+        document.getElementById('mensagem-esquerda').innerHTML = `- - -`;
         
+        mychart.data.datasets[0].data = [...dados_acumulados];
+        mychart.data.datasets[1].data = [];
+        mychart.data.datasets[2].data = [];
+        mychart.update();
     }
 </script>
