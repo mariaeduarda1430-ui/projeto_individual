@@ -149,8 +149,6 @@
     </div>
 </body>
 
-
-
 </html>
 <script>
     const labels = [
@@ -211,7 +209,6 @@
     let min = 0;
     let max = 0;
 
-    
     function getInicioDaSemana() {
         const hoje = new Date();
         const inicioDaSemana = new Date(hoje);
@@ -266,15 +263,12 @@
                             .then((dados) => {
                                 dadosBanco = dados;
 
-                                
                                 const registrosDoPet = dados.filter(r => r.tipo === petSelecionado);
                                 const ultimo = registrosDoPet[registrosDoPet.length - 1];
 
                                 if (ultimo) {
                                     const dataRegistro = new Date(ultimo.dtcomida);
                                     const diaSemana = dataRegistro.getDay();
-                                    const dataFormatada = dataRegistro.toLocaleDateString('pt-BR');
-                                    const horaFormatada = dataRegistro.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
                                     document.getElementById('mensagem-corpo2').innerHTML += `
                                     <p>
                                         <span style="border-bottom: 1px solid #AF8D11; display: block; padding: 4px 0;">
@@ -347,12 +341,19 @@
         else if (petSelecionado == 'Coelho') { min = 100; max = 250; }
         else if (petSelecionado == 'Peixe Grande') { min = 1; max = 3; }
 
+       
+        mychart.data.datasets[1].data = Array(7).fill(min);
+        mychart.data.datasets[1].label = `Mínimo (${min}g)`;
+        mychart.data.datasets[2].data = Array(7).fill(max);
+        mychart.data.datasets[2].label = `Máximo (${max}g)`;
+
         if (!Array.isArray(dadosBanco) || dadosBanco.length === 0) {
+            mychart.data.datasets[0].data = [...dados_acumulados];
             mychart.update();
             return;
         }
 
-      
+       
         const inicioDaSemana = getInicioDaSemana();
 
         dadosBanco.forEach(registro => {
@@ -367,23 +368,11 @@
                 if (diaSemana >= 0 && diaSemana <= 6) {
                     dados_acumulados[diaSemana] += peso;
                 }
-
-                const dataFormatada = dataRegistro.toLocaleDateString('pt-BR');
-                const horaFormatada = dataRegistro.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-
-                if (registrosVisiveis) {
-                    document.getElementById('mensagem-corpo2').innerHTML += `
-                <p> 
-                    <span style="border-bottom: 1px solid #AF8D11; display: block; padding: 4px 0;">
-                       <span style='font-size: 1.3em'> <strong>${labels[diaSemana]}</strong></span> - 
-                        ${registro.texto} Total acumulado do pet no dia: ${dados_acumulados[diaSemana]}g ☑
-                    </span>
-                </p>
-            `;
-                }
             }
         });
 
+        
+        mychart.data.datasets[0].data = [...dados_acumulados];
 
         const hoje = new Date().getDay();
         const totalHoje = dados_acumulados[hoje];
@@ -396,13 +385,35 @@
             document.getElementById('mensagem-esquerda').innerHTML = `Adequada`;
         }
 
-        mychart.data.datasets[0].data = [...dados_acumulados];
-        mychart.data.datasets[1].data = Array(7).fill(min);
-        mychart.data.datasets[1].label = `Mínimo (${min}g)`;
-        mychart.data.datasets[2].data = Array(7).fill(max);
-        mychart.data.datasets[2].label = `Máximo (${max}g)`;
-
         mychart.update();
+    }
+
+   
+    function exibirTodosRegistros(petSelecionado, dados) {
+        document.getElementById('mensagem-corpo2').innerHTML = "";
+
+        const registrosDoPet = dados.filter(r => r.tipo === petSelecionado);
+
+        if (registrosDoPet.length === 0) {
+            document.getElementById('mensagem-corpo2').innerHTML = "<p style='color: gray;'>Nenhum registro encontrado para este pet.</p>";
+            return;
+        }
+
+        registrosDoPet.forEach(registro => {
+            const dataRegistro = new Date(registro.dtcomida);
+            const diaSemana = dataRegistro.getDay();
+            const dataFormatada = dataRegistro.toLocaleDateString('pt-BR');
+            const horaFormatada = dataRegistro.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+            document.getElementById('mensagem-corpo2').innerHTML += `
+                <p>
+                    <span style="border-bottom: 1px solid #AF8D11; display: block; padding: 4px 0;">
+                        <span style='font-size: 1.3em'><strong>${labels[diaSemana]} - ${dataFormatada}</strong></span> - 
+                        ${registro.texto} ☑
+                    </span>
+                </p>
+            `;
+        });
     }
 
     var registrosVisiveis = false;
@@ -412,7 +423,7 @@
         document.getElementById('mensagem-corpo2').innerHTML = "";
     }
 
-   
+  
     function verRegistros() {
         const petSelecionado = document.getElementById('select_pet').value;
         if (petSelecionado === 'nada') {
@@ -427,7 +438,7 @@
             .then((dados) => {
                 dadosBanco = dados;
                 registrosVisiveis = true;
-                atualizarMetaIdeal();
+                exibirTodosRegistros(petSelecionado, dados);
             })
             .catch((erro) => console.error("Erro ao carregar registros:", erro));
     }
