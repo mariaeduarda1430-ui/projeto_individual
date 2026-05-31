@@ -51,7 +51,7 @@ body {
   margin: 0;
 }
 .titulo {
-  color: #ffe088; /*cor definida para cabeçalho na pagina inicial*/
+  color: #ffe088; 
 }
 .topicos {
   display: flex;
@@ -126,7 +126,7 @@ body {
   height: 22%;
 }
 .foto {
-  /*DEFINIÇÃO DO TAMANHO DA IMAGEM DO JABUTI*/
+  
   position: relative;
   width: 30%;
   height: 100%;
@@ -139,7 +139,7 @@ body {
 
 .texto-foto {
   position: absolute;
-  top: 75%; /* Move o topo para o meio vertical do pai */
+  top: 75%; 
   left: 6%;
   width: 30%;
   height: 20%;

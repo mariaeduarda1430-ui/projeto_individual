@@ -178,14 +178,14 @@ function cadastrar() {
   }
 
   if (contador == 4) {
-   // Agora enviamos os dados para o servidor
+  
     fetch("/usuarios/cadastrar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // O nome dessas chaves deve ser o mesmo que o Controller da API espera
+       
         nomeServer: nome,
         emailServer: email,
         senhaServer: senha

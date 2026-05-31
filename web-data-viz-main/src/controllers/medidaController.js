@@ -5,10 +5,10 @@ function registrar(req, res) {
   var comida = req.body.comidaServer;
   var petSelecionado = req.body.tipoAnimalServer;
   var fkUsuario = req.body.fkUsuarioServer;
-  var texto = req.body.mensagem;
+  var texto = req.body.textoServer;
 
   console.log(
-    `[Controller] Tentando Registrar - Peso: ${quantidade}, Alimento: ${comida}, Animal: ${petSelecionado}, Usuário: ${fkUsuario}`,
+    `[Controller] Tentando Registrar - Peso: ${quantidade}, Alimento: ${comida}, Animal: ${petSelecionado}, Usuário: ${fkUsuario}, Texto ${texto}`
   );
 
   // Validação de segurança para impedir qualquer injeção de undefined no SQL
@@ -18,7 +18,7 @@ function registrar(req, res) {
     petSelecionado == "undefined" ||
     petSelecionado == "nada" ||
     fkUsuario == "undefined" ||
-    texto == "un"
+    texto == "undefined"
   ) {
     return res
       .status(400)
@@ -29,7 +29,7 @@ function registrar(req, res) {
 
   // Corrigido o nome do objeto medidamodel de acordo com o require do seu arquivo
   medidamodel
-    .registrar(quantidade, comida, petSelecionado, fkUsuario)
+    .registrar(quantidade, comida, petSelecionado, fkUsuario, undefined, texto)
     .then(function (resultado) {
       res.status(201).json(resultado);
     })

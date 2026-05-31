@@ -43,7 +43,7 @@ body {
 .principal {
   display: flex;
   width: 100vw;
-  height: 100vh; /*unidade vh (Viewport Height) -- olham para a "janela" do navegador e não para o conteúdo.*/
+  height: 100vh; 
 }
 
 .direita {

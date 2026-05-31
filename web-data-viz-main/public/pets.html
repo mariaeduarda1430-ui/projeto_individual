@@ -83,7 +83,7 @@
 
             </div>
 
-            <!-- FOTO 2-->
+          
 
             <div class="foto">
                 <img src="./assets/bichos/cagado.png" alt="">
@@ -109,7 +109,7 @@
 
             </div>
 
-            <!-- FOTO 3-->
+        
 
             <div class="foto">
                 <img src="./assets/bichos/beta.jpg" alt="">
@@ -135,7 +135,7 @@
 
             </div>
         </div>
-        <!-- FILEIRA2 - FOTO 3-->
+      
         <div class="foto-fileira2">
             <div class="foto">
                 <img src="./assets/bichos/gato2.jpg" alt="">
@@ -211,7 +211,7 @@
             </div>
         </div>
 
-        <!-- FILEIRA3 - FOTO 7-->
+        
         <div class="foto-fileira3">
             <div class="foto">
                 <img src="./assets/bichos/porquinho.jpg" alt="">
@@ -282,18 +282,18 @@
 
 </html>
 <script>
-    // Sempre que a página carregar, ele executa isso:
+
     window.onload = function () {
 
         const nomeCompleto = sessionStorage.NOME_USUARIO;
 
         if (sessionStorage.NOME_USUARIO != null) {
 
-            const primeiroNome = nomeCompleto.split(' ')[0] // separa o nome em uma lista ent se eu colocar 'Maria Eduarda' ele faz ['Maria', 'Eduarda']
+            const primeiroNome = nomeCompleto.split(' ')[0] 
 
             b_usuario.innerHTML = primeiroNome;
         } else {
-            // Se tentar entrar sem logar, volta pro login
+           
             window.location = "login.html";
         }
     }

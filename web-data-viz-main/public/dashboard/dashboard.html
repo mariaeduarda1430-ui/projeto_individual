@@ -15,11 +15,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Manrope:wght@200..800&family=Matemasie&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Send+Flowers&display=swap"
         rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Manrope:wght@200..800&family=Matemasie&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Send+Flowers&display=swap"
-        rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../css/style dash.css">
@@ -29,13 +24,11 @@
     <div class="cabeçalho">
         <div class="titulo">
             <h1 class="agbalumo-regular">NutriNobre</h1>
-
         </div>
         <div class="topicos">
             <div class="manrope-regular">
                 <a href="../Inicial.html">Início</a>
                 <a href="../pets.html">Pets</a>
-
                 <a href="../nutricao.html">Nutrição</a>
                 <a href="./dashboard.html" class="ativo">Rotina</a>
             </div>
@@ -44,8 +37,6 @@
             <span>Bem Vindo(a), <span id="b_usuario"></span></span>
         </div>
     </div>
-
-    <!--    COMEÇO DO CORPO DO SITE    -->
 
     <div class="corpo1">
         <div class="titulo-corpo1">
@@ -60,7 +51,6 @@
                 <div class="caixa1">
                     <div class="titulo-caixa1">
                         <span>REGISTRO DO BANQUETE</span>
-
                     </div>
                     <div class="info-caixa1">
                         <span>QUANTIDADE (GRAMAS)</span>
@@ -107,15 +97,13 @@
                 </div>
             </div>
         </div>
-
-
     </div>
+
     <div class="corpo2">
         <div class="caixa3">
-
-
             <div class="titulo-corpo2">
                 <span>REGISTROS RECENTES</span>
+                <button onclick="verRegistros()">Ver registros</button>
                 <button onclick="limparSemana()">Limpar registro</button>
             </div>
             <div class="informacao-corpo2">
@@ -134,11 +122,9 @@
                     <a href="../nutricao.html">Nutrição</a>
                 </div>
             </div>
-
         </div>
-
-
     </div>
+
     <div class="corpo3">
         <div class="esquerda">
             <div class="titulo-corpo3">
@@ -156,22 +142,18 @@
             <div class="links-corpo3">
                 <a href="../Inicial.html">Início</a><br>
                 <a href="../pets.html">Pets</a><br>
-
                 <a href="../nutricao.html">Nutrição</a><br>
                 <a href="./dashboard/dashboard.html">Rotina</a>
             </div>
-
         </div>
     </div>
-
 </body>
 
 
 
 </html>
-
 <script>
-   const labels = [
+    const labels = [
         'domingo',
         'segunda',
         'terça',
@@ -182,9 +164,8 @@
     ];
     const dados_acumulados = [0, 0, 0, 0, 0, 0, 0];
     const historico_comidas = [];
-    
-    // Variável global para guardar todos os registros brutos vindos do banco de dados
-    let dadosBanco = []; 
+
+    let dadosBanco = [];
 
     const data = {
         labels: labels,
@@ -193,20 +174,20 @@
             backgroundColor: '#FFE088',
             borderColor: '#917400',
             data: dados_acumulados,
-            fill: true 
+            fill: true
         },
         {
             label: 'Mínimo Ideal',
-            data: [], 
-            borderColor: '#00FF00', 
+            data: [],
+            borderColor: '#00FF00',
             borderDash: [5, 5],
             fill: false,
             pointRadius: 0
         },
         {
             label: 'Máximo Ideal',
-            data: [], 
-            borderColor: '#FF0000', 
+            data: [],
+            borderColor: '#FF0000',
             borderDash: [5, 5],
             fill: false,
             pointRadius: 0
@@ -230,19 +211,32 @@
     let min = 0;
     let max = 0;
 
+    
+    function getInicioDaSemana() {
+        const hoje = new Date();
+        const inicioDaSemana = new Date(hoje);
+        inicioDaSemana.setDate(hoje.getDate() - hoje.getDay());
+        inicioDaSemana.setHours(0, 0, 0, 0);
+        return inicioDaSemana;
+    }
+
     function adicionar() {
         var idUsuarioVar = sessionStorage.ID_USUARIO;
-        var mensagem =  document.getElementById('mensagem-corpo2').value;
 
         const petSelecionado = document.getElementById('select_pet').value;
 
         if (petSelecionado == 'nada') {
             alert("Antes de registrar a nutrição, selecione qual pet está sendo alimentado!");
             return;
-        }   
+        }
 
         let quantidade = Number(input_quantidade.value);
         let comida = input_alimento.value;
+
+        const agora = new Date();
+        const dataFormatadaMsg = agora.toLocaleDateString('pt-BR');
+        const horaFormatadaMsg = agora.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+        var mensagem = `Pet: ${petSelecionado} comeu ${quantidade}g de ${comida} em ${dataFormatadaMsg} às ${horaFormatadaMsg}.`;
 
         input_quantidade.value = '';
         input_alimento.value = '';
@@ -262,21 +256,45 @@
                     textoServer: mensagem
                 })
             })
-            .then(function (resposta) {
-                if (resposta.ok) {
-                    
-                    carregarGraficos(); 
-                } else {
-                    console.error("Erro ao enviar dados para o banco.");
-                }
-            })
-            .catch(function (erro) {
-                console.error("Erro na requisição FETCH:", erro);
-            });
+                .then(function (resposta) {
+                    if (resposta.ok) {
+                        carregarGraficosSemRegistros();
 
-            // Código para feedback imediato na tela enquanto o fetch processa
-            const agora = new Date();
-            let diaSemana = agora.getDay();
+                        const idUsuario = sessionStorage.ID_USUARIO;
+                        fetch(`/medidas/dashboard/${idUsuario}`)
+                            .then((res) => res.json())
+                            .then((dados) => {
+                                dadosBanco = dados;
+
+                                
+                                const registrosDoPet = dados.filter(r => r.tipo === petSelecionado);
+                                const ultimo = registrosDoPet[registrosDoPet.length - 1];
+
+                                if (ultimo) {
+                                    const dataRegistro = new Date(ultimo.dtcomida);
+                                    const diaSemana = dataRegistro.getDay();
+                                    const dataFormatada = dataRegistro.toLocaleDateString('pt-BR');
+                                    const horaFormatada = dataRegistro.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+                                    document.getElementById('mensagem-corpo2').innerHTML += `
+                                    <p>
+                                        <span style="border-bottom: 1px solid #AF8D11; display: block; padding: 4px 0;">
+                                            <span style='font-size: 1.3em'><strong>${labels[diaSemana]}</strong></span> - 
+                                            ${ultimo.texto} Total acumulado do pet no dia: ${dados_acumulados[diaSemana]}g ☑
+                                        </span>
+                                    </p>
+                                `;
+                                }
+                            });
+                    } else {
+                        console.error("Erro ao enviar dados para o banco.");
+                    }
+                })
+                .catch(function (erro) {
+                    console.error("Erro na requisição FETCH:", erro);
+                });
+
+            const agora2 = new Date();
+            let diaSemana = agora2.getDay();
 
             dados_acumulados[diaSemana] += quantidade;
             historico_comidas.push(`${comida} (${quantidade}g)`);
@@ -298,12 +316,13 @@
     function atualizarMetaIdeal() {
         const petSelecionado = document.getElementById('select_pet').value;
 
-        // 1. Zera o vetor de acumulação do gráfico antes de recalcular
         for (let i = 0; i < dados_acumulados.length; i++) {
             dados_acumulados[i] = 0;
         }
-        
-        document.getElementById('mensagem-corpo2').innerHTML = "";
+
+        if (registrosVisiveis) {
+            document.getElementById('mensagem-corpo2').innerHTML = "";
+        }
         document.getElementById('mensagem-esquerda').innerHTML = `- - -`;
         contador = 0;
 
@@ -317,7 +336,6 @@
             return;
         }
 
-        // Definição das metas com base no pet selecionado
         if (petSelecionado == 'Porquinho da Índia') { min = 30; max = 160; }
         else if (petSelecionado == 'Jabuti') { min = 100; max = 200; }
         else if (petSelecionado == 'Cachorro Pequeno') { min = 55; max = 180; }
@@ -329,43 +347,44 @@
         else if (petSelecionado == 'Coelho') { min = 100; max = 250; }
         else if (petSelecionado == 'Peixe Grande') { min = 1; max = 3; }
 
-        // 2. FILTRAGEM DINÂMICA: Varre os dados do banco e calcula as somas apenas para o animal escolhido
-        dadosBanco.forEach(registro => {
-    if (registro.tipo === petSelecionado) {
-        // Passa a data do banco direto para o construtor. 
-        // Se ela vier como ISO String (ex: 2026-05-20T21:00:00.000Z), o JS já converte para o seu fuso local.
-        const dataRegistro = new Date(registro.dtcomida);
-        const diaSemana = dataRegistro.getDay();
-        const peso = Number(registro.peso);
-
-        if (diaSemana >= 0 && diaSemana <= 6) {
-            dados_acumulados[diaSemana] += peso;
+        if (!Array.isArray(dadosBanco) || dadosBanco.length === 0) {
+            mychart.update();
+            return;
         }
-    }
-});
 
-// 3. Renderiza a lista visual filtrada apenas com o histórico do pet ativo
-dadosBanco.forEach(registro => {
-    if (registro.tipo === petSelecionado) {
-        const dataRegistro = new Date(registro.dtcomida);
-        const diaSemana = dataRegistro.getDay();
-        
-        // Formata usando o fuso horário local do navegador do usuário
-        const dataFormatada = dataRegistro.toLocaleDateString('pt-BR');
-        const horaFormatada = dataRegistro.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+      
+        const inicioDaSemana = getInicioDaSemana();
 
-        document.getElementById('mensagem-corpo2').innerHTML += `
-            <p> 
-                <span style="border-bottom: 1px solid #AF8D11; display: block; padding: 4px 0;">
-                    <strong>${labels[diaSemana]} (${dataFormatada} às ${horaFormatada})</strong> - 
-                    Pet: <u>${registro.tipo}</u> comeu ${registro.peso}g de <em>${registro.comida}</em>. Total acumulado do pet no dia: ${dados_acumulados[diaSemana]}g ☑
-                </span>
-            </p>
-        `;
-    }
-});
+        dadosBanco.forEach(registro => {
+            if (registro.tipo === petSelecionado) {
+                const dataRegistro = new Date(registro.dtcomida);
 
-        // 4. Atualiza o semáforo de performance com base no total do bicho filtrado hoje
+                if (dataRegistro < inicioDaSemana) return;
+
+                const diaSemana = dataRegistro.getDay();
+                const peso = Number(registro.peso);
+
+                if (diaSemana >= 0 && diaSemana <= 6) {
+                    dados_acumulados[diaSemana] += peso;
+                }
+
+                const dataFormatada = dataRegistro.toLocaleDateString('pt-BR');
+                const horaFormatada = dataRegistro.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+                if (registrosVisiveis) {
+                    document.getElementById('mensagem-corpo2').innerHTML += `
+                <p> 
+                    <span style="border-bottom: 1px solid #AF8D11; display: block; padding: 4px 0;">
+                       <span style='font-size: 1.3em'> <strong>${labels[diaSemana]}</strong></span> - 
+                        ${registro.texto} Total acumulado do pet no dia: ${dados_acumulados[diaSemana]}g ☑
+                    </span>
+                </p>
+            `;
+                }
+            }
+        });
+
+
         const hoje = new Date().getDay();
         const totalHoje = dados_acumulados[hoje];
 
@@ -377,7 +396,6 @@ dadosBanco.forEach(registro => {
             document.getElementById('mensagem-esquerda').innerHTML = `Adequada`;
         }
 
-        // 5. Atualiza as linhas e as métricas do Chart.js
         mychart.data.datasets[0].data = [...dados_acumulados];
         mychart.data.datasets[1].data = Array(7).fill(min);
         mychart.data.datasets[1].label = `Mínimo (${min}g)`;
@@ -387,13 +405,31 @@ dadosBanco.forEach(registro => {
         mychart.update();
     }
 
+    var registrosVisiveis = false;
+
     function limparSemana() {
-        for (let i = 0; i < dados_acumulados.length; i++) {
-            dados_acumulados[i] = 0;
-        }
+        registrosVisiveis = false;
         document.getElementById('mensagem-corpo2').innerHTML = "";
-        mychart.update();
-        alert("Diário reiniciado!");
+    }
+
+   
+    function verRegistros() {
+        const petSelecionado = document.getElementById('select_pet').value;
+        if (petSelecionado === 'nada') {
+            alert("Selecione um animal para ver os registros!");
+            return;
+        }
+
+        const idUsuario = sessionStorage.ID_USUARIO;
+
+        fetch(`/medidas/dashboard/${idUsuario}`)
+            .then((res) => res.json())
+            .then((dados) => {
+                dadosBanco = dados;
+                registrosVisiveis = true;
+                atualizarMetaIdeal();
+            })
+            .catch((erro) => console.error("Erro ao carregar registros:", erro));
     }
 
     window.onload = function () {
@@ -409,21 +445,37 @@ dadosBanco.forEach(registro => {
         }
     }
 
+    function carregarGraficosSemRegistros() {
+        const idUsuario = sessionStorage.ID_USUARIO;
+
+        fetch(`/medidas/dashboard/${idUsuario}`)
+            .then((res) => res.json())
+            .then((dados) => {
+                dadosBanco = dados;
+                const salvo = registrosVisiveis;
+                registrosVisiveis = false;
+                const petSelecionado = document.getElementById('select_pet').value;
+                if (petSelecionado !== "nada") {
+                    atualizarMetaIdeal();
+                }
+                registrosVisiveis = salvo;
+            })
+            .catch((erro) => console.error("Erro ao carregar dados do gráfico:", erro));
+    }
+
     function carregarGraficos() {
         const idUsuario = sessionStorage.ID_USUARIO;
 
         fetch(`/medidas/dashboard/${idUsuario}`)
             .then((res) => res.json())
             .then((dados) => {
-                dadosBanco = dados; // Salva o retorno atualizado na variável global
-                
+                dadosBanco = dados;
+
                 const petSelecionado = document.getElementById('select_pet').value;
-                
-                // SE o usuário já tiver escolhido um pet, apenas atualiza os dados dele na tela
+
                 if (petSelecionado !== "nada") {
                     atualizarMetaIdeal();
                 } else {
-                    // Se for o primeiro carregamento da página (onde está "nada"), roda o reset inicial
                     atualizarGraficoAoIniciar();
                 }
             })
@@ -433,14 +485,13 @@ dadosBanco.forEach(registro => {
     function atualizarGraficoAoIniciar() {
         console.log("Dados recebidos e salvos globalmente:", dadosBanco);
 
-        // Reseta o gráfico e o select APENAS quando a página abre pela primeira vez
         for (let i = 0; i < dados_acumulados.length; i++) {
             dados_acumulados[i] = 0;
         }
         document.getElementById('mensagem-corpo2').innerHTML = "<p style='color: gray;'>Selecione um animal para visualizar o histórico específico.</p>";
         document.getElementById('select_pet').value = "nada";
         document.getElementById('mensagem-esquerda').innerHTML = `- - -`;
-        
+
         mychart.data.datasets[0].data = [...dados_acumulados];
         mychart.data.datasets[1].data = [];
         mychart.data.datasets[2].data = [];

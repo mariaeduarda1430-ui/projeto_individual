@@ -293,13 +293,13 @@ body {
   margin-top: 1%;
 }
 .img-corpo2 img {
-  width: 100%; /* Ocupa toda a largura do pai */
-  height: auto; /* Mantém a proporção original */
+  width: 100%; 
+  height: auto; 
 }
 
 .txt {
   position: absolute;
-  top: 15%; /* Move o topo para o meio vertical do pai */
+  top: 15%; 
   left: 6%;
   font-family: 'Noto Serif';
 }
@@ -336,7 +336,7 @@ body {
   font-size: 15px;
   justify-content: space-between;
   flex-direction: row;
-  gap: 40%;
+  gap: 10%;
   margin-top: 3%;
  
 }
@@ -368,7 +368,7 @@ body {
 }
 .informacao-corpo2 div {
   padding-left: 5%; 
-  width: 95%;
+  width: 90%;
   align-items: center;
   font-family: "Manrope";
 }

@@ -48,7 +48,7 @@ body {
 
 /*          fontes escolhidas                 */
 .agbalumo-regular {
-  /*Fonte TITULO*/
+
   font-family: "Agbalumo", system-ui;
   font-weight: 400;
   font-style: normal;
@@ -172,7 +172,7 @@ body {
 }
 .box1-corpo2 {
   display: flex;
-  align-items: flex-start; /*Qual a diferença de flex-start pra start*/
+  align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 7%;
   margin-left: 6%;
@@ -220,12 +220,12 @@ body {
   height: auto;
 }
 .imgdt img {
-  width: 100%; /* Ocupa toda a largura do pai */
-  height: auto; /* Mantém a proporção original */
+  width: 100%; 
+  height: auto; 
 }
 .txt {
   position: absolute;
-  top: 15%; /* Move o topo para o meio vertical do pai */
+  top: 15%; 
   left: 6%;
 }
 .minit {
