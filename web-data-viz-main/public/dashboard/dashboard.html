@@ -341,7 +341,7 @@
         else if (petSelecionado == 'Coelho') { min = 100; max = 250; }
         else if (petSelecionado == 'Peixe Grande') { min = 1; max = 3; }
 
-       
+
         mychart.data.datasets[1].data = Array(7).fill(min);
         mychart.data.datasets[1].label = `Mínimo (${min}g)`;
         mychart.data.datasets[2].data = Array(7).fill(max);
@@ -353,7 +353,7 @@
             return;
         }
 
-       
+
         const inicioDaSemana = getInicioDaSemana();
 
         dadosBanco.forEach(registro => {
@@ -371,7 +371,7 @@
             }
         });
 
-        
+
         mychart.data.datasets[0].data = [...dados_acumulados];
 
         const hoje = new Date().getDay();
@@ -388,7 +388,7 @@
         mychart.update();
     }
 
-   
+
     function exibirTodosRegistros(petSelecionado, dados) {
         document.getElementById('mensagem-corpo2').innerHTML = "";
 
@@ -408,7 +408,7 @@
             document.getElementById('mensagem-corpo2').innerHTML += `
                 <p>
                     <span style="border-bottom: 1px solid #AF8D11; display: block; padding: 4px 0;">
-                        <span style='font-size: 1.3em'><strong>${labels[diaSemana]} - ${dataFormatada}</strong></span> - 
+                        <span style='font-size: 1.3em'><strong>${labels[diaSemana]}</strong></span> - 
                         ${registro.texto} ☑
                     </span>
                 </p>
@@ -423,7 +423,7 @@
         document.getElementById('mensagem-corpo2').innerHTML = "";
     }
 
-  
+
     function verRegistros() {
         const petSelecionado = document.getElementById('select_pet').value;
         if (petSelecionado === 'nada') {
