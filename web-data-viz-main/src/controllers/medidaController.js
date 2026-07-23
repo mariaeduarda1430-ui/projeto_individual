@@ -11,7 +11,6 @@ function registrar(req, res) {
     `[Controller] Tentando Registrar - Peso: ${quantidade}, Alimento: ${comida}, Animal: ${petSelecionado}, Usuário: ${fkUsuario}, Texto ${texto}`
   );
 
-  // Validação de segurança para impedir qualquer injeção de undefined no SQL
   if (
     quantidade == "undefined" ||
     comida == "undefined" ||

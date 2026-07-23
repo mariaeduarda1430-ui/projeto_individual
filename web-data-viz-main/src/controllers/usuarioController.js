@@ -74,7 +74,7 @@ function cadastrar(req, res) {
   }
 }
 
-module.exports = {
-  autenticar,
-  cadastrar,
-};
+  module.exports = {
+    autenticar,
+    cadastrar,
+  };
